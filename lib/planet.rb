@@ -1,4 +1,6 @@
 class Planet
+  attr_reader :grid
+
   def initialize(x, y)
     @width = x
     @height = y
@@ -21,20 +23,48 @@ class Planet
     
     case direction
       when :left
-        @grid[key - 1] = organism
+        @grid[left key] = organism
       when :right
-        @grid[key + 1] = organism
+        @grid[right key] = organism
       when :down
-        @grid[key + @width] = organism
+        @grid[down key] = organism
       when :up
-        @grid[key - @width] = organism
+        @grid[up key] = organism
     end
 
     @grid[key] = nil
   end
      
-  def grid
-    @grid
+  def left(key)
+    if key % @width == 0
+      key + @width - 1
+    else
+      key - 1
+    end
+  end
+
+  def right(key)
+    if (key + 1) % @width == 0
+      key - @width + 1
+    else
+      key + 1
+    end
+  end
+
+  def down(key)
+    if key >= (size - @width)
+      key % @width
+    else
+      key + @width 
+    end
+  end
+
+  def up(key)
+    if key < @height
+      size - (@width - key)
+    else
+      key - @width 
+    end
   end
 
   def size

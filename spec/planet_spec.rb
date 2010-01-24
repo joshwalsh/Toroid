@@ -60,4 +60,36 @@ describe Planet do
     @planet[3,2].should == 'barb'
     @planet[3,3].should be_nil
   end
+
+  it 'should wrap off the left side of the screen' do
+    @planet[0,3] = 'barb'
+    @planet.move(0, 3, :left)
+
+    @planet[9,3].should == 'barb'
+    @planet[0,3].should be_nil
+  end
+
+  it 'should wrap off the right side of the screen' do
+    @planet[9,3] = 'barb'
+    @planet.move(9, 3, :right)
+
+    @planet[0,3].should == 'barb'
+    @planet[9,3].should be_nil
+  end
+
+  it 'should wrap off the top of the screen' do
+    @planet[3,0] = 'barb'
+    @planet.move(3, 0, :up)
+
+    @planet[3,9].should == 'barb'
+    @planet[5,0].should be_nil
+  end
+
+  it 'should wrap off the bottom of the screen' do
+    @planet[3,9] = 'barb'
+    @planet.move(3, 9, :down)
+
+    @planet[3,0].should == 'barb'
+    @planet[3,9].should be_nil
+  end
 end
