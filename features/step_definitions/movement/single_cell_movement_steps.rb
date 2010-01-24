@@ -3,7 +3,7 @@ Given /^there is an organism on the board$/ do
   @game.planet[3,3] = 'barb'
 end
 
-When /^and it is able to move$/ do
+When /^it is able to move$/ do
   @game.planet.move(3, 3, :left)
 end
 
