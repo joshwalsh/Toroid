@@ -14,10 +14,10 @@ describe Planet do
   end
 
   it 'determines grid location for coordinates' do
-    @planet.determine_key_for_coordinate(0,0).should == 0
-    @planet.determine_key_for_coordinate(5,0).should == 5
-    @planet.determine_key_for_coordinate(1,3).should == 31
-    @planet.determine_key_for_coordinate(8,4).should == 48
+    @planet.key_for_coordinate(0,0).should == 0
+    @planet.key_for_coordinate(5,0).should == 5
+    @planet.key_for_coordinate(1,3).should == 31
+    @planet.key_for_coordinate(8,4).should == 48
   end
 
   it 'reads empty grid cells' do

@@ -6,12 +6,12 @@ class Planet
   end
 
   def [](x,y)
-    key = determine_key_for_coordinate x,y
+    key = key_for_coordinate x,y
     @grid[key]
   end
 
   def []=(x,y,value)
-    key = determine_key_for_coordinate x,y
+    key = key_for_coordinate x,y
     @grid[key] = value
   end
      
@@ -23,7 +23,7 @@ class Planet
     @width * @height
   end
 
-  def determine_key_for_coordinate(x,y)
+  def key_for_coordinate(x,y)
     (@width * y) + x
   end
 end
