@@ -3,7 +3,7 @@ require 'planet'
 class Game
   attr_accessor :planet
 
-  def initialize
-    @planet = Planet.new
+  def initialize(x = 10, y = 10)
+    @planet = Planet.new x,y
   end
 end
