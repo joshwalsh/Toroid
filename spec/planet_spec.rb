@@ -92,4 +92,9 @@ describe Planet do
     @planet[3,0].should == 'barb'
     @planet[3,9].should be_nil
   end
+
+  it 'should not allow setting an organism outside the grid' do
+    @planet[14,18] = 'barb'
+    @planet[14,18].should be_false
+  end
 end

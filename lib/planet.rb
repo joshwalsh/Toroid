@@ -8,11 +8,17 @@ class Planet
   end
 
   def [](x,y)
+    return false if x > @width
+    return false if y > @height
+
     key = key_for_coordinate x,y
     @grid[key]
   end
 
   def []=(x,y,value)
+    return false if x > @width
+    return false if y > @height
+
     key = key_for_coordinate x,y
     @grid[key] = value
   end
