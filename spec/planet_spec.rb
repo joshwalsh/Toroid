@@ -6,7 +6,7 @@ describe Planet do
   end
 
   it 'starts with an empty grid' do
-    @planet.should be_empty
+    @planet.grid.size.should == 0
   end
 
   it 'has a 10 x 10 grid' do

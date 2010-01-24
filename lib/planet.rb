@@ -15,8 +15,8 @@ class Planet
     @grid[key] = value
   end
      
-  def empty?
-    true
+  def grid
+    @grid
   end
 
   def size
