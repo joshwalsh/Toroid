@@ -14,6 +14,24 @@ class Planet
     key = key_for_coordinate x,y
     @grid[key] = value
   end
+
+  def move(x,y,direction)
+    key = key_for_coordinate x,y
+    organism = @grid[key]
+    
+    case direction
+      when :left
+        @grid[key - 1] = organism
+      when :right
+        @grid[key + 1] = organism
+      when :down
+        @grid[key + @width] = organism
+      when :up
+        @grid[key - @width] = organism
+    end
+
+    @grid[key] = nil
+  end
      
   def grid
     @grid

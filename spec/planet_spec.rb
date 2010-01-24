@@ -28,4 +28,36 @@ describe Planet do
     @planet[3,6] = 'barb'
     @planet[3,6].should == 'barb'
   end
+
+  it 'should move an organism to the left' do
+    @planet[3,3] = 'barb'
+    @planet.move(3, 3, :left)
+
+    @planet[2,3].should == 'barb'
+    @planet[3,3].should be_nil
+  end
+
+  it 'should move an organism to the right' do
+    @planet[3,3] = 'barb'
+    @planet.move(3, 3, :right)
+
+    @planet[4,3].should == 'barb'
+    @planet[3,3].should be_nil
+  end
+
+  it 'should move an organism down' do
+    @planet[3,3] = 'barb'
+    @planet.move(3, 3, :down)
+
+    @planet[3,4].should == 'barb'
+    @planet[3,3].should be_nil
+  end
+
+  it 'should move an organism up' do
+    @planet[3,3] = 'barb'
+    @planet.move(3, 3, :up)
+
+    @planet[3,2].should == 'barb'
+    @planet[3,3].should be_nil
+  end
 end
