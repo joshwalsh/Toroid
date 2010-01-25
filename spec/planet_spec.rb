@@ -97,4 +97,13 @@ describe Planet do
     @planet[14,18] = 'barb'
     @planet[14,18].should be_false
   end
+
+  it 'should not allow moving an organism into an occupied cell' do
+    @planet[3,5] = 'barb'
+    @planet[4,5] = 'steve'
+    @planet.move(3, 5, :right)
+
+    @planet[3,5].should == 'barb'
+    @planet[4,5].should == 'steve'
+  end
 end

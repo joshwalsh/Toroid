@@ -16,8 +16,8 @@ class Planet
   end
 
   def []=(x,y,organism)
-    return false if x > @width
-    return false if y > @height
+    return false if x > (@width - 1)
+    return false if y > (@height - 1)
 
     key = key_for_coordinate x,y
     @grid[key] = organism
@@ -26,17 +26,22 @@ class Planet
   def move(x,y,direction)
     origin = key_for_coordinate x,y
     organism = @grid[origin]
-    
-    destination = move_organism(origin, direction)
+    destination = key_by_direction(origin, direction)
+
+    return false if occupied? destination
 
     @grid[destination] = organism
     @grid[origin] = nil
   end
      
-  def move_organism(key, direction)
+  def key_by_direction(key, direction)
     send(direction, key)
   end
   
+  def occupied?(key)
+    @grid[key] != nil
+  end
+
   def left(key)
     if key % @width == 0
       key + @width - 1
