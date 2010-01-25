@@ -15,32 +15,28 @@ class Planet
     @grid[key]
   end
 
-  def []=(x,y,value)
+  def []=(x,y,organism)
     return false if x > @width
     return false if y > @height
 
     key = key_for_coordinate x,y
-    @grid[key] = value
+    @grid[key] = organism
   end
 
   def move(x,y,direction)
-    key = key_for_coordinate x,y
-    organism = @grid[key]
+    origin = key_for_coordinate x,y
+    organism = @grid[origin]
     
-    case direction
-      when :left
-        @grid[left key] = organism
-      when :right
-        @grid[right key] = organism
-      when :down
-        @grid[down key] = organism
-      when :up
-        @grid[up key] = organism
-    end
+    destination = move_organism(origin, direction)
 
-    @grid[key] = nil
+    @grid[destination] = organism
+    @grid[origin] = nil
   end
      
+  def move_organism(key, direction)
+    send(direction, key)
+  end
+  
   def left(key)
     if key % @width == 0
       key + @width - 1
