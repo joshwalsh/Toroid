@@ -2,9 +2,11 @@ require File.dirname(__FILE__) + '/spec_helper'
 require 'game'
 
 describe Game do
-  it "should create a planet" do
-    @game = Game.new
+  context 'new game' do
+    it "should create a planet" do
+      @game = Game.new(10,10)
 
-    @game.planet.should_not be_empty
+      @game.planet.size.should == 100 
+    end
   end
 end
