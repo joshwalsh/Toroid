@@ -110,5 +110,28 @@ describe Planet do
     it 'should list neighbors of a given cell' do
       @planet.neighbors(3,5).should == [[3,4],[4,5],[3,6],[2,5]]
     end
+
+    it 'should list not list any empty neighbors' do
+      @planet[3,4] = 'steve'
+      @planet[4,5] = 'jim'
+      @planet[3,6] = 'john'
+      @planet[2,5] = 'liz'
+
+      @planet.empty_neighbor_cells(3,5).should == []
+    end
+
+    it 'should list not list empty top and bottom neighbors' do
+      @planet[4,5] = 'jim'
+      @planet[2,5] = 'liz'
+
+      @planet.empty_neighbor_cells(3,5).should == [[3,4],[3,6]]
+    end
+
+    it 'should list not list empty left and right neighbors' do
+      @planet[3,4] = 'jim'
+      @planet[3,6] = 'liz'
+
+      @planet.empty_neighbor_cells(3,5).should == [[4,5],[2,5]]
+    end
   end
 end

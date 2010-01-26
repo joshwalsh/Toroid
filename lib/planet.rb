@@ -61,9 +61,19 @@ class Planet
   end
 
   def neighbors(x, y)
-    [:up, :right, :down, :left].collect do |direction|
+    [:up, :right, :down, :left].map do |direction|
       cell_in_direction x, y, direction
     end
+  end
+
+  def empty_neighbor_cells(x,y)
+    return_value = []
+
+    neighbors(x, y).each do |neighbor|
+      return_value << neighbor if !occupied? neighbor
+    end
+
+    return_value
   end
 
   def cell_in_direction(x, y, direction)
