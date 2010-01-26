@@ -67,13 +67,9 @@ class Planet
   end
 
   def empty_neighbor_cells(x,y)
-    return_value = []
-
-    neighbors(x, y).each do |neighbor|
-      return_value << neighbor if !occupied? neighbor
+    neighbors(x, y).select do |neighbor|
+      !occupied? neighbor
     end
-
-    return_value
   end
 
   def cell_in_direction(x, y, direction)
