@@ -105,4 +105,10 @@ describe Planet do
       @planet[4,5].should == 'steve'
     end
   end
+
+  context 'is aware of cell neighbors' do
+    it 'should list neighbors of a given cell' do
+      @planet.neighbors(3,5).should == [[3,4],[4,5],[3,6],[2,5]]
+    end
+  end
 end

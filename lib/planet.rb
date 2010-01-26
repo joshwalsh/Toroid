@@ -20,7 +20,7 @@ class Planet
 
   def move(x,y,direction)
     origin = [x,y]
-    destination = coordinate_by_direction(x, y, direction)
+    destination = cell_in_direction(x, y, direction)
 
     return false if occupied? destination
 
@@ -60,7 +60,13 @@ class Planet
     end
   end
 
-  def coordinate_by_direction(x, y, direction)
+  def neighbors(x, y)
+    [:up, :right, :down, :left].collect do |direction|
+      cell_in_direction x, y, direction
+    end
+  end
+
+  def cell_in_direction(x, y, direction)
     send(direction, x, y)
   end
   
