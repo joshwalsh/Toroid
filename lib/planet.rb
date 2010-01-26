@@ -4,81 +4,74 @@ class Planet
   def initialize(x, y)
     @width = x
     @height = y
-    @grid = []
+    @grid = Hash.new
   end
 
   def [](x,y)
     return false if x > (@width - 1)
     return false if y > (@height - 1)
 
-    key = key_for_coordinate x,y
-    @grid[key]
+    @grid[[x,y]]
   end
 
   def []=(x,y,organism)
     return false if x > (@width - 1)
     return false if y > (@height - 1)
 
-    key = key_for_coordinate x,y
-    @grid[key] = organism
+    @grid[[x,y]] = organism
   end
 
   def move(x,y,direction)
-    origin = key_for_coordinate x,y
-    organism = @grid[origin]
-    destination = key_by_direction(origin, direction)
+    organism = @grid[[x,y]]
+    destination = key_by_direction(x, y, direction)
 
     return false if occupied? destination
 
     @grid[destination] = organism
-    @grid[origin] = nil
+    @grid[[x,y]] = nil
   end
      
-  def key_by_direction(key, direction)
-    send(direction, key)
+  def key_by_direction(x, y, direction)
+    send(direction, x, y)
   end
   
-  def occupied?(key)
-    @grid[key] != nil
+  def occupied?(location)
+    @grid[location] != nil
   end
 
-  def left(key)
-    if key % @width == 0
-      key + @width - 1
+  def left(x,y)
+    if x == 0
+      [@width - 1, y]
     else
-      key - 1
+      [x - 1, y] 
     end
   end
 
-  def right(key)
-    if (key + 1) % @width == 0
-      key - @width + 1
+  def right(x,y)
+    if x == (@width - 1)
+      [0, y]
     else
-      key + 1
+      [x + 1, y] 
     end
   end
 
-  def down(key)
-    if key >= (size - @width)
-      key % @width
+  def down(x,y)
+    if y == (@height - 1)
+      [x, 0]
     else
-      key + @width 
+      [x, y + 1] 
     end
   end
 
-  def up(key)
-    if key < @height
-      size - (@width - key)
+  def up(x,y)
+    if y == 0
+      [x, @height - 1]
     else
-      key - @width 
+      [x, y - 1] 
     end
   end
 
   def size
     @width * @height
-  end
-
-  def key_for_coordinate(x,y)
-    (@width * y) + x
   end
 end

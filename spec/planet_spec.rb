@@ -16,13 +16,6 @@ describe Planet do
   end
 
   context 'manipulates the grid' do
-    it 'determines grid location for coordinates' do
-      @planet.key_for_coordinate(0,0).should == 0
-      @planet.key_for_coordinate(5,0).should == 5
-      @planet.key_for_coordinate(1,3).should == 31
-      @planet.key_for_coordinate(8,4).should == 48
-    end
-
     it 'reads empty grid cells' do
       @planet[3,6].should be_nil
     end
