@@ -8,24 +8,21 @@ class Planet
 
   def [](x,y)
     return false if outside_grid? x, y
-
     @grid[[x,y]]
   end
 
   def []=(x,y,organism)
     return false if outside_grid? x, y
-
     @grid[[x,y]] = organism
   end
 
   def move(x,y,direction)
-    origin = [x,y]
-    destination = cell_in_direction(x, y, direction)
+    x2, y2 = cell_in_direction(x, y, direction)
 
-    return false if occupied? destination
+    return false if occupied? x2, y2
 
-    @grid[destination] = @grid[origin]
-    @grid[origin] = nil
+    self[x2, y2] = self[x, y]
+    self[x, y] = nil
   end
      
   def left(x,y)
@@ -67,8 +64,8 @@ class Planet
   end
 
   def empty_neighbor_cells(x,y)
-    neighbors(x, y).select do |neighbor|
-      !occupied? neighbor
+    neighbors(x, y).select do |neighbor_x, neighbor_y|
+      !occupied? neighbor_x, neighbor_y 
     end
   end
 
@@ -82,8 +79,8 @@ class Planet
     false
   end
 
-  def occupied?(location)
-    @grid[location] != nil
+  def occupied?(x, y)
+    self[x,y] != nil
   end
 
   def size
