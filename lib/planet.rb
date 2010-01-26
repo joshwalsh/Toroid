@@ -2,43 +2,32 @@ class Planet
   attr_reader :grid
 
   def initialize(x, y)
-    @width = x
-    @height = y
+    @width, @height = x, y
     @grid = Hash.new
   end
 
   def [](x,y)
-    return false if x > (@width - 1)
-    return false if y > (@height - 1)
+    return false if outside_grid? x, y
 
     @grid[[x,y]]
   end
 
   def []=(x,y,organism)
-    return false if x > (@width - 1)
-    return false if y > (@height - 1)
+    return false if outside_grid? x, y
 
     @grid[[x,y]] = organism
   end
 
   def move(x,y,direction)
-    organism = @grid[[x,y]]
-    destination = key_by_direction(x, y, direction)
+    origin = [x,y]
+    destination = coordinate_by_direction(x, y, direction)
 
     return false if occupied? destination
 
-    @grid[destination] = organism
-    @grid[[x,y]] = nil
+    @grid[destination] = @grid[origin]
+    @grid[origin] = nil
   end
      
-  def key_by_direction(x, y, direction)
-    send(direction, x, y)
-  end
-  
-  def occupied?(location)
-    @grid[location] != nil
-  end
-
   def left(x,y)
     if x == 0
       [@width - 1, y]
@@ -69,6 +58,20 @@ class Planet
     else
       [x, y - 1] 
     end
+  end
+
+  def coordinate_by_direction(x, y, direction)
+    send(direction, x, y)
+  end
+  
+  def outside_grid?(x,y)
+    return true if x > (@width - 1)
+    return true if y > (@height - 1)
+    false
+  end
+
+  def occupied?(location)
+    @grid[location] != nil
   end
 
   def size
