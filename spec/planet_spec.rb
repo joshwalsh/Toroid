@@ -7,7 +7,7 @@ describe Planet do
 
   context 'is empty' do
     it 'starts with an empty grid' do
-      @planet.grid.size.should == 0
+      @planet.should be_empty
     end
 
     it 'has a 10 x 10 grid' do
@@ -26,8 +26,22 @@ describe Planet do
     end
 
     it 'should not allow setting an organism outside the grid' do
-      @planet[14,18] = 'barb'
-      @planet[14,18].should be_false
+      lambda {
+        @planet[14,18] = 'barb'
+      }.should raise_error(Planet::OutOfBoundsError)
+    end
+
+    it 'should return nil outside the grid' do
+      lambda {
+        @planet[14,18]
+      }.should raise_error(Planet::OutOfBoundsError)
+    end
+
+    it 'should remove an organism from the grid' do
+      @planet[3,6] = 'barb'
+      @planet[3,6] = nil
+      
+      @planet.should be_empty
     end
   end
 
@@ -132,6 +146,18 @@ describe Planet do
       @planet[3,6] = 'liz'
 
       @planet.empty_neighbor_cells(3,5).should == [[4,5],[2,5]]
+    end
+    
+    context "iterates itself" do
+      it 'should give the cells in a row' do
+        @planet[0,2] = 'x'
+        @planet.row(2).should == ['x',nil,nil,nil,nil,nil,nil,nil,nil,nil]
+      end
+      
+      it "should give the cells in a column" do
+        @planet[2,0] = 'x'
+        @planet.column(2).should == ['x',nil,nil,nil,nil,nil,nil,nil,nil,nil]
+      end 
     end
   end
 end

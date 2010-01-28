@@ -9,6 +9,6 @@ When /^I start a game$/ do
 end
 
 Then /^I should have an empty planet$/ do
-  @game.planet.grid.size.should == 0
+  @game.planet.should be_empty
 end
 

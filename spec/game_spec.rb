@@ -1,4 +1,3 @@
-require File.dirname(__FILE__) + '/spec_helper'
 require 'game'
 
 describe Game do
