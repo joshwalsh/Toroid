@@ -14,6 +14,8 @@ class PlanetRenderer
   end
   
   def render
-    "...\n.x.\n..x"
+    (0...@planet.height).map do |row|
+      render_row(row)
+    end.join("\n")
   end
 end

@@ -1,6 +1,7 @@
 class Planet
   class OutOfBoundsError < StandardError; end
-
+  attr_reader :width, :height
+  
   def initialize(x, y)
     @width, @height = x, y
     @grid = Hash.new

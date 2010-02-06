@@ -21,13 +21,13 @@ describe Planet do
     end
 
     it 'sets a value to a cell' do
-      @planet[3,6] = 'barb'
-      @planet[3,6].should == 'barb'
+      @planet[3,6] = 'x'
+      @planet[3,6].should == 'x'
     end
 
     it 'does not allow setting an organism outside the grid' do
       lambda {
-        @planet[14,18] = 'barb'
+        @planet[14,18] = 'x'
       }.should raise_error(Planet::OutOfBoundsError)
     end
 
@@ -38,7 +38,7 @@ describe Planet do
     end
 
     it 'removes an organism from the grid' do
-      @planet[3,6] = 'barb'
+      @planet[3,6] = 'x'
       @planet[3,6] = nil
       
       @planet.should be_empty
@@ -47,75 +47,75 @@ describe Planet do
 
   context 'moves organisms around' do
     it 'moves an organism to the left' do
-      @planet[3,3] = 'barb'
+      @planet[3,3] = 'x'
       @planet.move(3, 3, :left)
 
-      @planet[2,3].should == 'barb'
+      @planet[2,3].should == 'x'
       @planet[3,3].should be_nil
     end
 
     it 'moves an organism to the right' do
-      @planet[3,3] = 'barb'
+      @planet[3,3] = 'x'
       @planet.move(3, 3, :right)
 
-      @planet[4,3].should == 'barb'
+      @planet[4,3].should == 'x'
       @planet[3,3].should be_nil
     end
 
     it 'moves an organism down' do
-      @planet[3,3] = 'barb'
+      @planet[3,3] = 'x'
       @planet.move(3, 3, :down)
 
-      @planet[3,4].should == 'barb'
+      @planet[3,4].should == 'x'
       @planet[3,3].should be_nil
     end
 
     it 'moves an organism up' do
-      @planet[3,3] = 'barb'
+      @planet[3,3] = 'x'
       @planet.move(3, 3, :up)
 
-      @planet[3,2].should == 'barb'
+      @planet[3,2].should == 'x'
       @planet[3,3].should be_nil
     end
 
     it 'wraps off the left side of the screen' do
-      @planet[0,3] = 'barb'
+      @planet[0,3] = 'x'
       @planet.move(0, 3, :left)
 
-      @planet[9,3].should == 'barb'
+      @planet[9,3].should == 'x'
       @planet[0,3].should be_nil
     end
 
     it 'wraps off the right side of the screen' do
-      @planet[9,3] = 'barb'
+      @planet[9,3] = 'x'
       @planet.move(9, 3, :right)
 
-      @planet[0,3].should == 'barb'
+      @planet[0,3].should == 'x'
       @planet[9,3].should be_nil
     end
 
     it 'wraps off the top of the screen' do
-      @planet[3,0] = 'barb'
+      @planet[3,0] = 'x'
       @planet.move(3, 0, :up)
 
-      @planet[3,9].should == 'barb'
+      @planet[3,9].should == 'x'
       @planet[5,0].should be_nil
     end
 
     it 'wraps off the bottom of the screen' do
-      @planet[3,9] = 'barb'
+      @planet[3,9] = 'x'
       @planet.move(3, 9, :down)
 
-      @planet[3,0].should == 'barb'
+      @planet[3,0].should == 'x'
       @planet[3,9].should be_nil
     end
 
     it 'does not allow moving an organism into an occupied cell' do
-      @planet[3,5] = 'barb'
+      @planet[3,5] = 'x'
       @planet[4,5] = 'steve'
       @planet.move(3, 5, :right)
 
-      @planet[3,5].should == 'barb'
+      @planet[3,5].should == 'x'
       @planet[4,5].should == 'steve'
     end
   end

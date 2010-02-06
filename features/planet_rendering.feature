@@ -5,7 +5,13 @@ Feature: Render a Planet
 	So that I can examine the state of the planet
 	
 	Scenario:
-	
+		Given I have a small empty planet
+		When I render the planet
+		Then I should see:
+			|...|
+			|...|
+			|...|
+		
 		Given I have a small planet
 		When I render the planet
 		Then I should see:
