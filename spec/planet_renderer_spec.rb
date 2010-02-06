@@ -8,7 +8,7 @@ describe "PlanetRenderer" do
   end
   
   context "ASCII" do
-    it "should render a row" do
+    it "renders a row" do
       @planet[2,2] = 'x'
       @renderer.render_row(2).should == '..x'
       

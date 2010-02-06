@@ -25,19 +25,19 @@ describe Planet do
       @planet[3,6].should == 'barb'
     end
 
-    it 'should not allow setting an organism outside the grid' do
+    it 'does not allow setting an organism outside the grid' do
       lambda {
         @planet[14,18] = 'barb'
       }.should raise_error(Planet::OutOfBoundsError)
     end
 
-    it 'should return nil outside the grid' do
+    it 'returns nil outside the grid' do
       lambda {
         @planet[14,18]
       }.should raise_error(Planet::OutOfBoundsError)
     end
 
-    it 'should remove an organism from the grid' do
+    it 'removes an organism from the grid' do
       @planet[3,6] = 'barb'
       @planet[3,6] = nil
       
@@ -46,7 +46,7 @@ describe Planet do
   end
 
   context 'moves organisms around' do
-    it 'should move an organism to the left' do
+    it 'moves an organism to the left' do
       @planet[3,3] = 'barb'
       @planet.move(3, 3, :left)
 
@@ -54,7 +54,7 @@ describe Planet do
       @planet[3,3].should be_nil
     end
 
-    it 'should move an organism to the right' do
+    it 'moves an organism to the right' do
       @planet[3,3] = 'barb'
       @planet.move(3, 3, :right)
 
@@ -62,7 +62,7 @@ describe Planet do
       @planet[3,3].should be_nil
     end
 
-    it 'should move an organism down' do
+    it 'moves an organism down' do
       @planet[3,3] = 'barb'
       @planet.move(3, 3, :down)
 
@@ -70,7 +70,7 @@ describe Planet do
       @planet[3,3].should be_nil
     end
 
-    it 'should move an organism up' do
+    it 'moves an organism up' do
       @planet[3,3] = 'barb'
       @planet.move(3, 3, :up)
 
@@ -78,7 +78,7 @@ describe Planet do
       @planet[3,3].should be_nil
     end
 
-    it 'should wrap off the left side of the screen' do
+    it 'wraps off the left side of the screen' do
       @planet[0,3] = 'barb'
       @planet.move(0, 3, :left)
 
@@ -86,7 +86,7 @@ describe Planet do
       @planet[0,3].should be_nil
     end
 
-    it 'should wrap off the right side of the screen' do
+    it 'wraps off the right side of the screen' do
       @planet[9,3] = 'barb'
       @planet.move(9, 3, :right)
 
@@ -94,7 +94,7 @@ describe Planet do
       @planet[9,3].should be_nil
     end
 
-    it 'should wrap off the top of the screen' do
+    it 'wraps off the top of the screen' do
       @planet[3,0] = 'barb'
       @planet.move(3, 0, :up)
 
@@ -102,7 +102,7 @@ describe Planet do
       @planet[5,0].should be_nil
     end
 
-    it 'should wrap off the bottom of the screen' do
+    it 'wraps off the bottom of the screen' do
       @planet[3,9] = 'barb'
       @planet.move(3, 9, :down)
 
@@ -110,7 +110,7 @@ describe Planet do
       @planet[3,9].should be_nil
     end
 
-    it 'should not allow moving an organism into an occupied cell' do
+    it 'does not allow moving an organism into an occupied cell' do
       @planet[3,5] = 'barb'
       @planet[4,5] = 'steve'
       @planet.move(3, 5, :right)
@@ -125,7 +125,7 @@ describe Planet do
       @planet.neighbors(3,5).should == [[3,4],[4,5],[3,6],[2,5]]
     end
 
-    it 'should list not list any empty neighbors' do
+    it 'does not list any empty neighbors' do
       @planet[3,4] = 'steve'
       @planet[4,5] = 'jim'
       @planet[3,6] = 'john'
@@ -134,14 +134,14 @@ describe Planet do
       @planet.empty_neighbor_cells(3,5).should == []
     end
 
-    it 'should list not list empty top and bottom neighbors' do
+    it 'lists empty top and bottom neighbors' do
       @planet[4,5] = 'jim'
       @planet[2,5] = 'liz'
 
       @planet.empty_neighbor_cells(3,5).should == [[3,4],[3,6]]
     end
 
-    it 'should list not list empty left and right neighbors' do
+    it 'lists empty left and right neighbors' do
       @planet[3,4] = 'jim'
       @planet[3,6] = 'liz'
 
@@ -149,12 +149,12 @@ describe Planet do
     end
     
     context "iterates itself" do
-      it 'should give the cells in a row' do
+      it 'lists the cells in a row' do
         @planet[0,2] = 'x'
         @planet.row(2).should == ['x',nil,nil,nil,nil,nil,nil,nil,nil,nil]
       end
       
-      it "should give the cells in a column" do
+      it "lists the cells in a column" do
         @planet[2,0] = 'x'
         @planet.column(2).should == ['x',nil,nil,nil,nil,nil,nil,nil,nil,nil]
       end 
