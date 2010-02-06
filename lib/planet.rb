@@ -64,6 +64,10 @@ class Planet
     end
   end
 
+  def occupied_cells
+    @grid
+  end
+
   def neighbors(x, y)
     [:up, :right, :down, :left].map do |direction|
       cell_in_direction x, y, direction

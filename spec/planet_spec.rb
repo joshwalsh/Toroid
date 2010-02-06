@@ -159,5 +159,14 @@ describe Planet do
         @planet.column(2).should == ['x',nil,nil,nil,nil,nil,nil,nil,nil,nil]
       end 
     end
+
+    context "understands the population" do
+      it "lists the occupied cells" do
+        @planet[0,1] = 'x'
+        @planet[0,2] = 'x'
+
+        @planet.occupied_cells.should == {[0,1] => 'x', [0,2] => 'x'}
+      end
+    end
   end
 end

@@ -13,3 +13,7 @@ Feature: Starting a new game
     Given I have started a game
     When I add an organism to the planet
     Then it should exist on the planet
+
+    Given I have started a game
+    When I populate the planet
+    Then I should have a planet with organisms
