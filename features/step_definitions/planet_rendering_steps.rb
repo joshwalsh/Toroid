@@ -1,8 +1,14 @@
 require 'planet_renderer'
 require 'planet'
 
+Given "I have a small empty planet" do
+  @planet = Planet.new 3,3
+end
+
 Given "I have a small planet" do
   @planet = Planet.new 3,3
+  @planet[1,1] = 'x'
+  @planet[2,2] = 'x'
 end
 
 When "I render the planet" do
