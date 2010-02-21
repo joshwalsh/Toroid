@@ -1,10 +1,13 @@
+require 'cell_navigator'
+
 Given /^there is an organism on the board$/ do
   @game = Game.new 
   @game.planet[3,3] = 'barb'
 end
 
 When /^it is able to move$/ do
-  @game.planet.move(3, 3, :left)
+  navigator = CellNavigator.new @game.planet
+  navigator.move(3, 3, :left)
 end
 
 Then /^it should move$/ do
