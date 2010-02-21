@@ -13,4 +13,9 @@ describe PlanetPopulator do
     (0...@planet.width).should include(x)
     (0...@planet.height).should include(y)
   end
+
+  it "populates the planet" do
+    @populator.populate 5
+    @planet.occupied_cells.size.should == 5
+  end
 end
