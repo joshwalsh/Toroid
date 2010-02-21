@@ -7,9 +7,11 @@ class PlanetPopulator
     i = 0
     until i == number_organisms
       x,y = generate_random_coordinate
-      @planet[x,y] = 'x' if @planet[x,y].nil?
 
-      i += 1
+      if @planet[x,y].nil?
+        @planet[x,y] = 'x'
+        i += 1
+      end
     end
   end
 

@@ -15,7 +15,7 @@ describe PlanetPopulator do
   end
 
   it "populates the planet" do
-    @populator.populate 5
-    @planet.occupied_cells.size.should == 5
+    @populator.populate 25
+    @planet.occupied_cells.size.should == 25
   end
 end
