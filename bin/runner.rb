@@ -11,4 +11,6 @@ populator = PlanetPopulator.new Session.planet
 populator.populate 15
 
 Render = PlanetRenderer.new Session.planet
+
+system("clear")
 puts Render.render
