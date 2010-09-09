@@ -9,42 +9,34 @@ describe CellNavigator do
 
   context 'gets cells by direction' do
     it 'gets cell at the left' do
-      @planet[3,3] = 'x'
       @navigator.cell_in_direction(3, 3, :left).should == [2,3]
     end
 
     it 'moves an organism to the right' do
-      @planet[3,3] = 'x'
       @navigator.cell_in_direction(3, 3, :right).should == [4,3]
     end
 
     it 'moves an organism down' do
-      @planet[3,3] = 'x'
       @navigator.cell_in_direction(3, 3, :down).should == [3,4]
     end
 
     it 'moves an organism up' do
-      @planet[3,3] = 'x'
       @navigator.cell_in_direction(3, 3, :down).should == [3,4]
     end
 
     it 'wraps off the left side of the screen' do
-      @planet[0,3] = 'x'
       @navigator.cell_in_direction(0, 3, :left).should == [9,3]
     end
 
     it 'wraps off the right side of the screen' do
-      @planet[9,3] = 'x'
       @navigator.cell_in_direction(9, 3, :right).should == [0,3]
     end
 
     it 'wraps off the top of the screen' do
-      @planet[3,0] = 'x'
       @navigator.cell_in_direction(3, 0, :up).should == [3,9]
     end
 
     it 'wraps off the bottom of the screen' do
-      @planet[3,9] = 'x'
       @navigator.cell_in_direction(3, 9, :down).should == [3,0]
     end
   end
