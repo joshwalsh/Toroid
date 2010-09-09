@@ -1,4 +1,6 @@
 class CellNavigator
+  class CurrentlyOccupiedError < StandardError; end
+
   def initialize(planet)
     @planet = planet
   end
@@ -10,7 +12,9 @@ class CellNavigator
   def move(x, y, direction)
     x2, y2 = cell_in_direction(x, y, direction)
 
-    return false if @planet.occupied? x2, y2
+    if @planet.occupied? x2, y2
+      raise CurrentlyOccupiedError
+    end
 
     @planet[x2, y2] = @planet[x, y]
     @planet[x,y] = nil

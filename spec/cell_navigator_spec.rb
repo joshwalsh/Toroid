@@ -77,8 +77,8 @@ describe CellNavigator do
     it 'does not allow moving an organism into an occupied cell' do
       @planet[3,5] = 'x'
       @planet[4,5] = 'steve'
-      @navigator.move(3, 5, :right)
 
+      lambda { @navigator.move(3, 5, :right).should raise_error CurrentlyOccupiedError }
       @planet[3,5].should == 'x'
       @planet[4,5].should == 'steve'
     end
