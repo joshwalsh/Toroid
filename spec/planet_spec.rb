@@ -64,5 +64,14 @@ describe Planet do
 
       @planet.occupied_cells.should == {[0,1] => 'x', [0,2] => 'x'}
     end
+
+    it "counts occupied cells" do
+      @planet[0,1] = 'x'
+      @planet[0,2] = 'x'
+      @planet[1,1] = 'x'
+      @planet[2,2] = 'x'
+
+      @planet.occupied_cells.count.should == 4
+    end
   end
 end
