@@ -1,6 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    autotest-growl (0.2.11)
+    autotest-standalone (4.5.8)
     builder (3.0.0)
     cucumber (1.0.2)
       builder (>= 2.1.2)
@@ -26,5 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest-growl
+  autotest-standalone
   cucumber
   rspec
