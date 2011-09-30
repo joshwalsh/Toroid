@@ -14,8 +14,7 @@ When /^I start a game$/ do
 end
 
 When /^I populate the planet$/ do
-  populator = PlanetPopulator.new @game.planet
-  populator.populate 15
+  @game.populate 15
 end
 
 When /^I add an organism to the planet$/ do
