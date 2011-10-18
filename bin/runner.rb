@@ -8,14 +8,10 @@ require 'planet_populator'
 require 'planet_renderer'
 require 'console_outputter'
 
-ConsoleOutputter.output "Board width: "
-width = gets.to_i
-ConsoleOutputter.output "Board height: "
-height = gets.to_i
-ConsoleOutputter.output "Population: "
-population = gets.to_i
-ConsoleOutputter.output "Years: "
-years = gets.to_i
+width = ConsoleOutputter.request_value("Board width: ").to_i
+height = ConsoleOutputter.request_value("Board height: ").to_i
+population = ConsoleOutputter.request_value("Population: ").to_i
+years = ConsoleOutputter.request_value("Years: ").to_i
 
 ConsoleOutputter.new_line
 

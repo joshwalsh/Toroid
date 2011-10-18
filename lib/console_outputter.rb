@@ -7,6 +7,11 @@ class ConsoleOutputter
     print output
   end
 
+  def self.request_value(question)
+    print question
+    gets
+  end
+
   def self.new_line
     print "\n"
   end

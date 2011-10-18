@@ -29,4 +29,16 @@ describe ConsoleOutputter do
       ConsoleOutputter.move_cursor_down(10)
     end
   end
+
+  context 'asking for input' do
+    it 'asks for input' do
+      ConsoleOutputter.should_receive(:print).with('Enter Value: ')
+      ConsoleOutputter.request_value("Enter Value: ")
+    end
+
+    it 'receives a requested value' do
+      ConsoleOutputter.stub(:gets).and_return('25')
+      ConsoleOutputter.request_value("Enter Value: ").should == "25"
+    end
+  end
 end
