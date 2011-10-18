@@ -6,11 +6,11 @@ class PlanetRenderer
   def render_row(y)
     @planet.row(y).map do |cell| 
       if cell.nil? 
-        '.'
+        '. '
       else 
-        cell.to_s
+        cell.to_s + ' '
       end
-    end.join
+    end.join.strip
   end
   
   def render

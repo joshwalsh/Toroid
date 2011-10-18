@@ -8,14 +8,14 @@ Feature: Render a Planet
 		Given I have a small empty planet
 		When I render the planet
 		Then I should see:
-			|...|
-			|...|
-			|...|
+			|. . .|
+			|. . .|
+			|. . .|
 
   Scenario: Render populated planet
 		Given I have a small planet
 		When I render the planet
 		Then I should see:
-			|...|
-			|.x.|
-			|..x|
+			|. . .|
+			|. x .|
+			|. . x|
