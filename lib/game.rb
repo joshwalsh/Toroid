@@ -10,7 +10,10 @@ class Game
   end
 
   def run(years)
-    @planet.age years
+    years.times do
+      @planet.age
+      move_organisms
+    end
   end
 
   private 
@@ -20,4 +23,6 @@ class Game
     populator.populate population
   end
 
+  def move_organisms
+  end
 end

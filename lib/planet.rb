@@ -70,7 +70,7 @@ class Planet
     @grid.clear
   end
 
-  def age(years)
+  def age(years = 1)
     @generation += years
   end
 end

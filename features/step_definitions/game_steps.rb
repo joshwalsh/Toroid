@@ -6,7 +6,7 @@ Given /^I have not started a game$/ do
 end
 
 Given /^I have started a game$/ do
-  @game = Game.new
+  @game = Game.new 10, 10
 end
 
 Given /^I start a game with (\d+) organisms$/ do |arg1|
@@ -21,7 +21,7 @@ When /^I add an organism to the planet$/ do
   @game.planet[0,0] = 'barb'
 end
 
-When /^the planet ages (\d+) years$/ do |days|
+When /^the planet ages (\d+) years*$/ do |days|
   @game.run days.to_i
 end
 

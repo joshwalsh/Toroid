@@ -80,6 +80,5 @@ describe Planet do
       @planet.age 3
       @planet.generation.should == 3
     end
-    
   end
 end

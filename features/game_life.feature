@@ -4,7 +4,6 @@ Feature: Lifetime of a game
   I want to watch a planet age
   So that I can watch planetary movement over time
 
-  @wip
   Scenario: Age a planet by 10 years
 
     Given I have started a game

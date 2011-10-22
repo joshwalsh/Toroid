@@ -4,12 +4,12 @@ Given /^there is an organism on the board$/ do
   @game.planet[3,3] = 'barb'
 end
 
-When /^it is able to move$/ do
-  navigator = CellNavigator.new @game.planet
-  navigator.move(3, 3, :left)
+Then /^it should not be where it started$/ do
+  pending
+  @game.planet[3,3].should be_nil
 end
 
-Then /^it should move$/ do
+Then /^it should be in a new location$/ do
+  pending
   @game.planet[2,3].should == 'barb'
-  @game.planet[3,3].should be_nil
 end
