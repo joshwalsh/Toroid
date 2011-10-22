@@ -18,6 +18,6 @@ Feature: Starting a new game
 
   Scenario: Create planet with multiple organisms
 
-    Given I have started a game
-    When I populate the planet
-    Then I should have a planet with organisms
+    Given I have not started a game
+    When I start a game with 15 organisms
+    Then I should have a planet with 15 organisms

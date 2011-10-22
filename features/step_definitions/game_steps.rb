@@ -9,12 +9,12 @@ Given /^I have started a game$/ do
   @game = Game.new
 end
 
-When /^I start a game$/ do
-  @game = Game.new
+Given /^I start a game with (\d+) organisms$/ do |arg1|
+  @game = Game.new 10, 10, 15
 end
 
-When /^I populate the planet$/ do
-  @game.populate 15
+When /^I start a game$/ do
+  @game = Game.new
 end
 
 When /^I add an organism to the planet$/ do
@@ -33,10 +33,10 @@ Then /^it should exist on the planet$/ do
   @game.planet[0,0].should == 'barb'
 end
 
-Then /^I should have a planet with organisms$/ do
-  @game.planet.occupied_cells.size.should == 15
+Then /^I should have a planet with (\d+) organisms$/ do |number_organisms|
+  @game.planet.occupied_cells.size.should == number_organisms.to_i
 end
 
-Then /^the planet should be (\d+) years older$/ do |arg1|
-  @game.planet.generation.should == 10
+Then /^the planet should be (\d+) years older$/ do |years|
+  @game.planet.generation.should == years.to_i
 end

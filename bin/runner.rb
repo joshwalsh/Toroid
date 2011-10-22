@@ -16,8 +16,7 @@ years = ConsoleOutputter.request_value("Years: ").to_i
 ConsoleOutputter.new_line
 
 years.times do |i|
-  session = Game.new width,height
-  session.populate population
+  session = Game.new width, height, population
 
   render = PlanetRenderer.new session.planet
 
