@@ -15,14 +15,15 @@ years = ConsoleOutputter.request_value("Years: ").to_i
 
 ConsoleOutputter.new_line
 
-years.times do |i|
-  session = Game.new width, height, population
+session = Game.new width, height, population
 
+years.times do |i|
+  session.run 1
   render = PlanetRenderer.new session.planet
 
   ConsoleOutputter.output render.render
   ConsoleOutputter.new_line
-  ConsoleOutputter.output "#{i + 1} YEARS OLD"
+  ConsoleOutputter.output "#{session.planet.generation} YEARS OLD"
 
   ConsoleOutputter.flush
 
