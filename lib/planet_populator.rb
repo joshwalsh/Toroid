@@ -4,6 +4,8 @@ class PlanetPopulator
   end
 
   def populate(number_organisms)
+    @planet.clear
+
     i = 0
     until i == number_organisms
       x,y = generate_random_coordinate
@@ -21,4 +23,5 @@ class PlanetPopulator
 
     [x,y]
   end
+
 end

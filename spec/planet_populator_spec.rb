@@ -18,4 +18,10 @@ describe PlanetPopulator do
     @populator.populate 25
     @planet.occupied_cells.size.should == 25
   end
+
+  it "clears the planet when repopulating" do
+    @populator.populate 5
+    @populator.populate 5
+    @planet.occupied_cells.size.should == 5
+  end
 end

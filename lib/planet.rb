@@ -66,6 +66,10 @@ class Planet
     @grid.empty?
   end
 
+  def clear
+    @grid.clear
+  end
+
   def age(years)
     @generation += years
   end
