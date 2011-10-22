@@ -5,8 +5,8 @@ Feature: Lifetime of a game
   So that I can watch planetary movement over time
 
   @wip
-  Scenario: Age a planet by 10 days
+  Scenario: Age a planet by 10 years
 
     Given I have started a game
-    When the planet ages 10 days
-    Then the planet should be 10 days older
+    When the planet ages 10 years
+    Then the planet should be 10 years older

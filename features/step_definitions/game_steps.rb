@@ -21,8 +21,8 @@ When /^I add an organism to the planet$/ do
   @game.planet[0,0] = 'barb'
 end
 
-When /^the planet ages (\d+) days$/ do |days|
-  @game.run days
+When /^the planet ages (\d+) years$/ do |days|
+  @game.run days.to_i
 end
 
 Then /^I should have an empty planet$/ do
@@ -37,6 +37,6 @@ Then /^I should have a planet with organisms$/ do
   @game.planet.occupied_cells.size.should == 15
 end
 
-Then /^the planet should be (\d+) days older$/ do |arg1|
-  @game.age.should == 10
+Then /^the planet should be (\d+) years older$/ do |arg1|
+  @game.planet.generation.should == 10
 end

@@ -1,10 +1,11 @@
 class Planet
   class OutOfBoundsError < StandardError; end
-  attr_reader :width, :height
+  attr_reader :width, :height, :generation
   
   def initialize(x, y)
     @width, @height = x, y
     @grid = Hash.new
+    @generation = 0
   end
 
   def [](x,y)
@@ -63,5 +64,9 @@ class Planet
 
   def empty?
     @grid.empty?
+  end
+
+  def age(years)
+    @generation += years
   end
 end

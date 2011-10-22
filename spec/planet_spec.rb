@@ -74,4 +74,12 @@ describe Planet do
       @planet.occupied_cells.count.should == 4
     end
   end
+
+  context "generations" do
+    it "ages over time" do
+      @planet.age 3
+      @planet.generation.should == 3
+    end
+    
+  end
 end
