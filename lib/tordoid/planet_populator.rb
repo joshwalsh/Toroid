@@ -1,26 +1,21 @@
 module Tordoid
   class PlanetPopulator
-    def initialize(planet)
-      @planet = planet
-    end
 
-    def populate(number_organisms)
-      @planet.clear
-
-      i = 0
-      until i == number_organisms
-        x,y = generate_random_coordinate
-
-        if @planet[x,y].nil?
-          @planet[x,y] = 'x'
-          i += 1
-        end
+    def populate(number_organisms, planet)
+      result = {}
+      1.upto(number_organisms) do
+        begin
+          x,y = generate_random_coordinate(planet.width, planet.height)
+        end while result.key?([x,y])
+        result.merge!({ [x,y] => 'x' })
       end
+      result
     end
 
-    def generate_random_coordinate
-      x = rand(@planet.width)  
-      y = rand(@planet.height)  
+
+    def generate_random_coordinate(width, height)
+      x = rand(width)  
+      y = rand(height)  
 
       [x,y]
     end
