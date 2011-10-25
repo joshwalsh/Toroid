@@ -2,16 +2,17 @@
 
 $: << File.dirname(__FILE__) + "/../lib"
 
+require 'tordoid'
 require 'game'
 require 'planet'
 require 'planet_populator'
 require 'planet_renderer'
 require 'console_outputter'
 
-width = ConsoleOutputter.request_value("Board width: ").to_i
-height = ConsoleOutputter.request_value("Board height: ").to_i
-population = ConsoleOutputter.request_value("Population: ").to_i
-years = ConsoleOutputter.request_value("Years: ").to_i
+width = Tordoid.config.width || ConsoleOutputter.request_value("Board width: ").to_i
+height = Tordoid.config.height || ConsoleOutputter.request_value("Board height: ").to_i
+population = Tordoid.config.population || ConsoleOutputter.request_value("Population: ").to_i
+years = Tordoid.config.years || ConsoleOutputter.request_value("Years: ").to_i
 
 ConsoleOutputter.new_line
 
