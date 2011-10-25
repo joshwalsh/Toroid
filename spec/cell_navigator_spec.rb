@@ -1,10 +1,9 @@
-require 'cell_navigator'
-require 'planet'
+require "spec_helper"
 
-describe CellNavigator do
+describe Tordoid::CellNavigator do
   before (:each) do
-    @planet = Planet.new(10,10)
-    @navigator = CellNavigator.new @planet
+    @planet = Tordoid::Planet.new(10,10)
+    @navigator = Tordoid::CellNavigator.new @planet
   end
 
   context 'gets cells by direction' do

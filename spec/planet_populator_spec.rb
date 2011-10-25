@@ -1,10 +1,9 @@
-require 'planet_populator'
-require 'planet'
+require 'spec_helper'
 
-describe PlanetPopulator do
+describe Tordoid::PlanetPopulator do
   before(:each) do
-    @planet = Planet.new 10,10
-    @populator = PlanetPopulator.new @planet
+    @planet = Tordoid::Planet.new 10,10
+    @populator = Tordoid::PlanetPopulator.new @planet
   end
 
   it "generates a random coordinate" do

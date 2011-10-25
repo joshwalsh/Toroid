@@ -1,9 +1,9 @@
-require 'game'
+require 'spec_helper'
 
-describe Game do
+describe Tordoid::Game do
   context 'new game' do
     it "creates a planet" do
-      @game = Game.new(10,10)
+      @game = Tordoid::Game.new(10,10)
 
       @game.planet.size.should == 100 
     end
@@ -11,7 +11,7 @@ describe Game do
 
   context 'game runs' do
     it "coordinates tasks for each run" do
-      @game = Game.new(10,10)
+      @game = Tordoid::Game.new(10,10)
       @game.planet = mock('planet')
       @game.planet.should_receive(:age).exactly(3).times
       @game.run 3

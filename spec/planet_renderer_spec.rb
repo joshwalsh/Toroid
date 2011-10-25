@@ -1,10 +1,9 @@
-require 'planet_renderer'
-require 'planet'
+require 'spec_helper'
 
-describe "PlanetRenderer" do
+describe Tordoid::PlanetRenderer do
   before(:each) do
-    @planet = Planet.new 3,3
-    @renderer = PlanetRenderer.new @planet
+    @planet = Tordoid::Planet.new 3,3
+    @renderer = Tordoid::PlanetRenderer.new @planet
   end
 
   context "ASCII" do

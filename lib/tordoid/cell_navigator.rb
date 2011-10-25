@@ -1,5 +1,6 @@
-class CellNavigator
-  class CurrentlyOccupiedError < StandardError; end
+module Tordoid
+  class CellNavigator
+    class CurrentlyOccupiedError < StandardError; end
 
   def initialize(planet)
     @planet = planet
@@ -70,5 +71,6 @@ class CellNavigator
     end
 
     [x, new_y]
+  end
   end
 end

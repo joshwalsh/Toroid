@@ -1,20 +1,17 @@
-require 'game'
-require 'planet_populator'
-
 Given /^I have not started a game$/ do
   @game = nil
 end
 
 Given /^I have started a game$/ do
-  @game = Game.new 10, 10
+  @game = Tordoid::Game.new 10, 10
 end
 
 Given /^I start a game with (\d+) organisms$/ do |arg1|
-  @game = Game.new 10, 10, 15
+  @game = Tordoid::Game.new 10, 10, 15
 end
 
 When /^I start a game$/ do
-  @game = Game.new
+  @game = Tordoid::Game.new
 end
 
 When /^I add an organism to the planet$/ do

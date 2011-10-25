@@ -1,35 +1,29 @@
 #!/usr/bin/env ruby
 
 $: << File.dirname(__FILE__) + "/../lib"
-
 require 'tordoid'
-require 'game'
-require 'planet'
-require 'planet_populator'
-require 'planet_renderer'
-require 'console_outputter'
 
-width = Tordoid.config.width || ConsoleOutputter.request_value("Board width: ").to_i
-height = Tordoid.config.height || ConsoleOutputter.request_value("Board height: ").to_i
-population = Tordoid.config.population || ConsoleOutputter.request_value("Population: ").to_i
-years = Tordoid.config.years || ConsoleOutputter.request_value("Years: ").to_i
+width = Tordoid.config.width || Tordoid::ConsoleOutputter.request_value("Board width: ").to_i
+height = Tordoid.config.height || Tordoid::ConsoleOutputter.request_value("Board height: ").to_i
+population = Tordoid.config.population || Tordoid::ConsoleOutputter.request_value("Population: ").to_i
+years = Tordoid.config.years || Tordoid::ConsoleOutputter.request_value("Years: ").to_i
 
-ConsoleOutputter.new_line
+Tordoid::ConsoleOutputter.new_line
 
-session = Game.new width, height, population
+session = Tordoid::Game.new width, height, population
 
 years.times do |i|
   session.run 1
-  render = PlanetRenderer.new session.planet
+  render = Tordoid::PlanetRenderer.new session.planet
 
-  ConsoleOutputter.output render.render
-  ConsoleOutputter.new_line
-  ConsoleOutputter.output "#{session.planet.generation} YEARS OLD"
+  Tordoid::ConsoleOutputter.output render.render
+  Tordoid::ConsoleOutputter.new_line
+  Tordoid::ConsoleOutputter.output "#{session.planet.generation} YEARS OLD"
 
-  ConsoleOutputter.flush
+  Tordoid::ConsoleOutputter.flush
 
-  ConsoleOutputter.move_cursor_up(height)
+  Tordoid::ConsoleOutputter.move_cursor_up(height)
   sleep 1
 end
 
-ConsoleOutputter.move_cursor_down(height)
+Tordoid::ConsoleOutputter.move_cursor_down(height)

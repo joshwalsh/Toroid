@@ -1,8 +1,8 @@
-require 'planet'
+require 'spec_helper'
 
-describe Planet do
+describe Tordoid::Planet do
   before (:each) do
-    @planet = Planet.new(10,10)
+    @planet = Tordoid::Planet.new(10,10)
   end
 
   context 'is empty' do
@@ -28,13 +28,13 @@ describe Planet do
     it 'does not allow setting an organism outside the grid' do
       lambda {
         @planet[14,18] = 'x'
-      }.should raise_error(Planet::OutOfBoundsError)
+      }.should raise_error(Tordoid::Planet::OutOfBoundsError)
     end
 
     it 'does not allow reading outside the grid' do
       lambda {
         @planet[14,18]
-      }.should raise_error(Planet::OutOfBoundsError)
+      }.should raise_error(Tordoid::Planet::OutOfBoundsError)
     end
 
     it 'removes an organism from the grid' do

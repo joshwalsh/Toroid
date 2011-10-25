@@ -1,5 +1,3 @@
-require 'cell_navigator'
-
 Given /^there is an organism on the board$/ do
   @game.planet[3,3] = 'barb'
 end
