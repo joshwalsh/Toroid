@@ -17,8 +17,15 @@ module Tordoid
     private 
 
     def populate(population)
-      populator = PlanetPopulator.new @planet
-      populator.populate population
+      populator = PlanetPopulator.new
+      populated_cells = populator.populate population, @planet
+
+      populated_cells.each do |coordinate, organism|
+        x = coordinate[0]
+        y = coordinate[1]
+
+        @planet[x,y] = organism
+      end
     end
 
     def move_organisms
