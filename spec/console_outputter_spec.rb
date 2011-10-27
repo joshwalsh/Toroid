@@ -38,6 +38,7 @@ describe Tordoid::ConsoleOutputter do
     end
 
     it 'receives a requested value' do
+      Tordoid::ConsoleOutputter.stub(:print)
       Tordoid::ConsoleOutputter.stub(:gets).and_return('25')
       Tordoid::ConsoleOutputter.request_value("Enter Value: ").should == "25"
     end
