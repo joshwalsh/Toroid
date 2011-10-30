@@ -29,6 +29,13 @@ module Tordoid
     end
 
     def move_organisms
+      navigator = CellNavigator.new @planet
+
+      @planet.occupied_cells.dup.map do |coordinate, organism|
+        x = coordinate[0]
+        y = coordinate[1]
+        navigator.move(x, y, :left)
+      end
     end
   end
 end

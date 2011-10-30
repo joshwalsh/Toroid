@@ -12,6 +12,7 @@ describe Tordoid::Game do
   context 'game runs' do
     it "coordinates tasks for each run" do
       subject.planet = mock('planet')
+      subject.planet.stub(:occupied_cells) { {} }
       subject.planet.should_receive(:age).exactly(3).times
       subject.run 3
     end
