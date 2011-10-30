@@ -1,114 +1,129 @@
 require "spec_helper"
 
 describe Tordoid::CellNavigator do
-  before (:each) do
-    @planet = Tordoid::Planet.new(10,10)
-    @navigator = Tordoid::CellNavigator.new @planet
+  let(:planet) {}
+  subject { Tordoid::CellNavigator.new planet }
+
+  before(:each) do
+    planet.stub(:width).and_return(10)
+    planet.stub(:height).and_return(10)
   end
 
   context 'gets cells by direction' do
     it 'gets cell at the left' do
-      @navigator.cell_in_direction(3, 3, :left).should == [2,3]
+      subject.cell_in_direction(3, 3, :left).should == [2,3]
     end
 
     it 'moves an organism to the right' do
-      @navigator.cell_in_direction(3, 3, :right).should == [4,3]
+      subject.cell_in_direction(3, 3, :right).should == [4,3]
     end
 
     it 'moves an organism down' do
-      @navigator.cell_in_direction(3, 3, :down).should == [3,4]
+      subject.cell_in_direction(3, 3, :down).should == [3,4]
     end
 
     it 'moves an organism up' do
-      @navigator.cell_in_direction(3, 3, :down).should == [3,4]
+      subject.cell_in_direction(3, 3, :down).should == [3,4]
     end
 
     it 'wraps off the left side of the screen' do
-      @navigator.cell_in_direction(0, 3, :left).should == [9,3]
+      subject.cell_in_direction(0, 3, :left).should == [9,3]
     end
 
     it 'wraps off the right side of the screen' do
-      @navigator.cell_in_direction(9, 3, :right).should == [0,3]
+      subject.cell_in_direction(9, 3, :right).should == [0,3]
     end
 
     it 'wraps off the top of the screen' do
-      @navigator.cell_in_direction(3, 0, :up).should == [3,9]
+      subject.cell_in_direction(3, 0, :up).should == [3,9]
     end
 
     it 'wraps off the bottom of the screen' do
-      @navigator.cell_in_direction(3, 9, :down).should == [3,0]
+      subject.cell_in_direction(3, 9, :down).should == [3,0]
     end
   end
 
   context 'moves organisms' do
-    it 'moves an organism to the left' do
-      @planet[3,3] = 'x'
-      @navigator.move(3, 3, :left)
+    before(:each) do
+      planet.stub(:width).and_return(10)
+      planet.stub(:height).and_return(10)
 
-      @planet[2,3].should == 'x'
-      @planet[3,3].should be_nil
+      planet.stub(:[]).with(3,3).and_return 'x'
+      planet.stub(:occupied?).and_return(false)
     end
 
-    it 'moves an organism to the right' do
-      @planet[3,3] = 'x'
-      @navigator.move(3, 3, :right)
+    context 'when able to move' do
+      it 'moves an organism to the left' do
+        planet.should_receive(:[]=).with(2,3,'x')
+        planet.should_receive(:[]=).with(3,3,nil)
 
-      @planet[4,3].should == 'x'
-      @planet[3,3].should be_nil
+        subject.move(3, 3, :left)
+      end
+
+      it 'moves an organism to the right' do
+        planet.should_receive(:[]=).with(4,3,'x')
+        planet.should_receive(:[]=).with(3,3,nil)
+
+        subject.move(3, 3, :right)
+      end
+
+      it 'moves an organism down' do
+        planet.should_receive(:[]=).with(3,4,'x')
+        planet.should_receive(:[]=).with(3,3,nil)
+
+        subject.move(3, 3, :down)
+      end
+
+      it 'moves an organism up' do
+        planet.should_receive(:[]=).with(3,2,'x')
+        planet.should_receive(:[]=).with(3,3,nil)
+
+        subject.move(3, 3, :up)
+      end
     end
 
-    it 'moves an organism down' do
-      @planet[3,3] = 'x'
-      @navigator.move(3, 3, :down)
+    context 'when not able to move' do
+      it 'does not allow moving an organism into an occupied cell' do
+        planet.stub(:occupied?).and_return(true)
+        planet.stub(:[]).with(2,3).and_return 'steve'
 
-      @planet[3,4].should == 'x'
-      @planet[3,3].should be_nil
-    end
-
-    it 'moves an organism up' do
-      @planet[3,3] = 'x'
-      @navigator.move(3, 3, :up)
-
-      @planet[3,2].should == 'x'
-      @planet[3,3].should be_nil
-    end
-
-    it 'does not allow moving an organism into an occupied cell' do
-      @planet[3,5] = 'x'
-      @planet[4,5] = 'steve'
-
-      lambda { @navigator.move(3, 5, :right).should raise_error CurrentlyOccupiedError }
-      @planet[3,5].should == 'x'
-      @planet[4,5].should == 'steve'
+        lambda { subject.move(3, 3, :right).should raise_error CurrentlyOccupiedError }
+      end
     end
   end
 
   context 'is aware of cell neighbors' do
     it 'should list neighbors of a given cell' do
-      @navigator.neighbors(3,5).should == [[3,4],[4,5],[3,6],[2,5]]
+      subject.neighbors(3,5).should == [[3,4],[4,5],[3,6],[2,5]]
     end
 
     it 'does not list any empty neighbors' do
-      @planet[3,4] = 'steve'
-      @planet[4,5] = 'jim'
-      @planet[3,6] = 'john'
-      @planet[2,5] = 'liz'
+      planet.stub(:occupied?).with(3,4).and_return(true)
+      planet.stub(:occupied?).with(4,5).and_return(true)
+      planet.stub(:occupied?).with(3,6).and_return(true)
+      planet.stub(:occupied?).with(2,5).and_return(true)
 
-      @navigator.empty_neighbor_cells(3,5).should == []
+      subject.empty_neighbor_cells(3,5).should == []
     end
 
     it 'lists empty top and bottom neighbors' do
-      @planet[4,5] = 'jim'
-      @planet[2,5] = 'liz'
+      planet.stub(:occupied?).with(3,4).and_return(false)
+      planet.stub(:occupied?).with(3,6).and_return(false)
 
-      @navigator.empty_neighbor_cells(3,5).should == [[3,4],[3,6]]
+      planet.stub(:occupied?).with(4,5).and_return(true)
+      planet.stub(:occupied?).with(2,5).and_return(true)
+
+      subject.empty_neighbor_cells(3,5).should == [[3,4],[3,6]]
     end
 
     it 'lists empty left and right neighbors' do
-      @planet[3,4] = 'jim'
-      @planet[3,6] = 'liz'
+      planet.stub(:occupied?).with(3,4).and_return(true)
+      planet.stub(:occupied?).with(3,6).and_return(true)
 
-      @navigator.empty_neighbor_cells(3,5).should == [[4,5],[2,5]]
+      planet.stub(:occupied?).with(4,5).and_return(false)
+      planet.stub(:occupied?).with(2,5).and_return(false)
+
+      subject.empty_neighbor_cells(3,5).should == [[4,5],[2,5]]
     end
   end
 end
