@@ -53,6 +53,13 @@ describe Tordoid::CellNavigator do
     end
 
     context 'when able to move' do
+      it 'transports from one coordinate to another' do
+        planet.should_receive(:[]=).with(1,1,'x')
+        planet.should_receive(:[]=).with(3,3,nil)
+
+        subject.transport(3, 3, 1, 1)
+      end
+
       it 'moves an organism to the left' do
         planet.should_receive(:[]=).with(2,3,'x')
         planet.should_receive(:[]=).with(3,3,nil)

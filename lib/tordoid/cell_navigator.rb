@@ -10,6 +10,11 @@ module Tordoid
     send(direction, x, y)
   end
 
+  def transport(x, y, new_x, new_y)
+    @planet[new_x, new_y] = @planet[x, y]
+    @planet[x,y] = nil
+  end
+
   def move(x, y, direction)
     x2, y2 = cell_in_direction(x, y, direction)
 
