@@ -28,9 +28,14 @@ module Tordoid
     def move_at_random(x, y)
       return false if empty_neighbor_cells(x, y) == []
 
-      new_cell = empty_neighbor_cells(x,y).first
+      new_x, new_y = select_random_coordinate_from_set empty_neighbor_cells(x,y)
 
-      transport(3, 3, new_cell[0], new_cell[1])
+      transport(3, 3, new_x, new_y)
+    end
+
+    def select_random_coordinate_from_set(set_of_coordinates)
+      selected_coordinate = set_of_coordinates.sample
+      [selected_coordinate[0], selected_coordinate[1]]
     end
 
     def neighbors(x, y)
