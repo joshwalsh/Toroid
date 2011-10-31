@@ -120,6 +120,7 @@ describe Tordoid::CellNavigator do
 
         subject.move_at_random(3,3)
       end
+
     end
   end
 
