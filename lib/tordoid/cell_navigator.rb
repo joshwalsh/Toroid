@@ -16,14 +16,13 @@ module Tordoid
   end
 
   def move(x, y, direction)
-    x2, y2 = cell_in_direction(x, y, direction)
+    new_x, new_y = cell_in_direction(x, y, direction)
 
-    if @planet.occupied? x2, y2
+    if @planet.occupied? new_x, new_y
       raise CurrentlyOccupiedError
     end
 
-    @planet[x2, y2] = @planet[x, y]
-    @planet[x,y] = nil
+    transport(x, y, new_x, new_y)
   end
 
   def move_at_random(x, y)
