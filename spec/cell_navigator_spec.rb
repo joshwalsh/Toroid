@@ -132,6 +132,18 @@ describe Tordoid::CellNavigator do
 
         subject.move_at_random(3,3)
       end
+
+      it 'moves into neighboring cell when all cells are unoccupied' do
+        planet.stub(:occupied?).with(2,3).and_return(false)
+        planet.stub(:occupied?).with(4,3).and_return(false)
+        planet.stub(:occupied?).with(3,2).and_return(false)
+        planet.stub(:occupied?).with(3,4).and_return(false)
+
+        subject.stub(:select_random_coordinate_from_set) { [3,4] }
+        subject.should_receive(:transport).with(3,3,3,4)
+
+        subject.move_at_random(3,3)
+      end
     end
   end
 
