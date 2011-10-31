@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Tordoid::CellNavigator do
-  let(:planet) {}
+  let(:planet) { mock() }
   subject { Tordoid::CellNavigator.new planet }
 
   before(:each) do
