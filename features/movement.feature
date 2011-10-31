@@ -11,4 +11,4 @@ Feature: Planetary Movement
     And there is an organism on the board
     When the planet ages 1 year
     Then it should not be where it started
-    And it should be in a new location
+    And it should be moved to an adjacent cell
