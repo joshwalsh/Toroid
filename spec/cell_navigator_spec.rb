@@ -93,17 +93,25 @@ describe Tordoid::CellNavigator do
 
     context 'at random' do
       it 'does not move when all neighboring cells are occupied' do
+        planet.stub(:occupied?).with(2,3).and_return(true)
+        planet.stub(:occupied?).with(4,3).and_return(true)
+        planet.stub(:occupied?).with(3,2).and_return(true)
         planet.stub(:occupied?).with(3,4).and_return(true)
+
+        subject.should_not_receive(:move)
+
+        subject.move_at_random(3,3)
+      end
+
+      it 'moves into neighboring cell when only one is unoccupied' do
+        planet.stub(:occupied?).with(3,4).and_return(false)
         planet.stub(:occupied?).with(4,5).and_return(true)
         planet.stub(:occupied?).with(3,6).and_return(true)
         planet.stub(:occupied?).with(2,5).and_return(true)
 
-        planet.should_not_receive(:[]=).with(3,4,'x')
-        planet.should_not_receive(:[]=).with(4,5,'x')
-        planet.should_not_receive(:[]=).with(3,6,'x')
-        planet.should_not_receive(:[]=).with(2,5,'x')
+        subject.should_receive(:move).with(3,3,:down)
 
-        subject.move_at_random(3,3).should == false
+        subject.move_at_random(3,3)
       end
     end
   end

@@ -22,7 +22,9 @@ module Tordoid
   end
 
   def move_at_random(x, y)
-    false
+    return false if empty_neighbor_cells(x, y) == []
+
+    move(3,3,:down)
   end
 
   def neighbors(x, y)
