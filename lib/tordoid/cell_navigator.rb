@@ -21,6 +21,10 @@ module Tordoid
     @planet[x,y] = nil
   end
 
+  def move_at_random(x, y)
+    false
+  end
+
   def neighbors(x, y)
     [:up, :right, :down, :left].map do |direction|
       cell_in_direction x, y, direction

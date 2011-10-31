@@ -90,6 +90,22 @@ describe Tordoid::CellNavigator do
         lambda { subject.move(3, 3, :right).should raise_error CurrentlyOccupiedError }
       end
     end
+
+    context 'at random' do
+      it 'does not move when all neighboring cells are occupied' do
+        planet.stub(:occupied?).with(3,4).and_return(true)
+        planet.stub(:occupied?).with(4,5).and_return(true)
+        planet.stub(:occupied?).with(3,6).and_return(true)
+        planet.stub(:occupied?).with(2,5).and_return(true)
+
+        planet.should_not_receive(:[]=).with(3,4,'x')
+        planet.should_not_receive(:[]=).with(4,5,'x')
+        planet.should_not_receive(:[]=).with(3,6,'x')
+        planet.should_not_receive(:[]=).with(2,5,'x')
+
+        subject.move_at_random(3,3).should == false
+      end
+    end
   end
 
   context 'is aware of cell neighbors' do
@@ -126,4 +142,5 @@ describe Tordoid::CellNavigator do
       subject.empty_neighbor_cells(3,5).should == [[4,5],[2,5]]
     end
   end
+
 end
