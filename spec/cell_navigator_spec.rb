@@ -111,12 +111,12 @@ describe Tordoid::CellNavigator do
       end
 
       it 'moves into neighboring cell when only one is unoccupied' do
-        planet.stub(:occupied?).with(3,4).and_return(false)
-        planet.stub(:occupied?).with(4,5).and_return(true)
-        planet.stub(:occupied?).with(3,6).and_return(true)
-        planet.stub(:occupied?).with(2,5).and_return(true)
+        planet.stub(:occupied?).with(2,3).and_return(false)
+        planet.stub(:occupied?).with(4,3).and_return(true)
+        planet.stub(:occupied?).with(3,2).and_return(true)
+        planet.stub(:occupied?).with(3,4).and_return(true)
 
-        subject.should_receive(:move).with(3,3,:down)
+        subject.should_receive(:transport).with(3,3,2,3)
 
         subject.move_at_random(3,3)
       end

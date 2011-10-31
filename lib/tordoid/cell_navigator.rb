@@ -28,7 +28,9 @@ module Tordoid
   def move_at_random(x, y)
     return false if empty_neighbor_cells(x, y) == []
 
-    move(3,3,:down)
+    new_cell = empty_neighbor_cells(x,y).first
+
+    transport(3, 3, new_cell[0], new_cell[1])
   end
 
   def neighbors(x, y)
