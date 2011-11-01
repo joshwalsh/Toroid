@@ -30,7 +30,7 @@ module Tordoid
 
       new_x, new_y = select_random_coordinate_from_set empty_neighbor_cells(x,y)
 
-      transport(3, 3, new_x, new_y)
+      transport(x, y, new_x, new_y)
     end
 
     def select_random_coordinate_from_set(set_of_coordinates)

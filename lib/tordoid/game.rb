@@ -34,7 +34,7 @@ module Tordoid
       @planet.occupied_cells.dup.map do |coordinate, organism|
         x = coordinate[0]
         y = coordinate[1]
-        navigator.move(x, y, :left)
+        navigator.move_at_random(x, y)
       end
     end
   end
