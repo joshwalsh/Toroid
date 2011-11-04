@@ -1,4 +1,3 @@
-@wip
 Feature: Planetary Movement
 
   As a player

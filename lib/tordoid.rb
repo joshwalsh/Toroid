@@ -3,6 +3,7 @@ require 'pathname'
 
 module Tordoid
   autoload :CellNavigator, "tordoid/cell_navigator"
+  autoload :CellMover, "tordoid/cell_mover"
   autoload :Config, "tordoid/config"
   autoload :ConsoleOutputter, "tordoid/console_outputter"
   autoload :Planet, "tordoid/planet"

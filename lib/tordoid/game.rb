@@ -1,7 +1,7 @@
 module Tordoid
   class Game
     attr_accessor :planet
-    attr_accessor :cell_navigator, :planet_populator
+    attr_accessor :cell_mover, :planet_populator
 
     def initialize(x = 10, y = 10, population = 0)
       @planet = Planet.new x,y
@@ -20,8 +20,8 @@ module Tordoid
     # you were instantiating inline. You can now inject
     # custom or stubbed versions of these instances in
     # your test code.
-    def cell_navigator
-      @cell_navigator ||= CellNavigator.new @planet
+    def cell_mover
+      @cell_mover ||= CellMover.new @planet
     end
 
     def planet_populator
@@ -45,7 +45,7 @@ module Tordoid
       @planet.occupied_cells.dup.map do |coordinate, organism|
         x = coordinate[0]
         y = coordinate[1]
-        cell_navigator.move_at_random(x, y)
+        cell_mover.move_at_random(x, y)
       end
     end
   end

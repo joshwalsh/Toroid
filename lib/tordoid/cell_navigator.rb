@@ -10,22 +10,7 @@ module Tordoid
       send(direction, x, y)
     end
 
-    def transport(x, y, new_x, new_y)
-      @planet[new_x, new_y] = @planet[x, y]
-      @planet[x,y] = nil
-    end
-
-    def move(x, y, direction)
-      new_x, new_y = cell_in_direction(x, y, direction)
-
-      if @planet.occupied? new_x, new_y
-        raise CurrentlyOccupiedError
-      end
-
-      transport(x, y, new_x, new_y)
-    end
-
-    def move_at_random(x, y)
+    def select_random_empty_coordinate(set_of_coordinates)
       return false if empty_neighbor_cells(x, y) == []
 
       new_x, new_y = select_random_coordinate_from_set empty_neighbor_cells(x,y)
