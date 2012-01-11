@@ -4,6 +4,7 @@ Feature: Planetary Movement
   I want to see organisms moving on the planet
   So that I can monitor their ecosystem
 
+  @wip
   Scenario: A single organism should make a single movement
 
     Given I have started a game

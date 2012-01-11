@@ -11,7 +11,7 @@ Given /^the system will navigate it to an adjacent cell$/ do
 
   navigator = Tordoid::CellNavigator.new @game.planet
   navigator.stub(:select_random_coordinate_from_set) { [2,3] }
-  @game.cell_navigator = navigator
+  @game.cell_mover.cell_navigator = navigator
 
   # Just a thought, but this smells more like a unit test to me than an
   # integration test when you are stubbing out these internal details.  If I

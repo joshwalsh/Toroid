@@ -60,7 +60,7 @@ describe Tordoid::CellMover do
         planet.stub(:occupied?).and_return(true)
         planet.stub(:[]).with(2,3).and_return 'steve'
 
-        lambda { subject.move(3, 3, :right).should raise_error CurrentlyOccupiedError }
+        expect { subject.move(3, 3, :right) }.to raise_error CurrentlyOccupiedError
       end
     end
 
