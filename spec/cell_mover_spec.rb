@@ -60,7 +60,7 @@ describe Tordoid::CellMover do
         planet.stub(:occupied?).and_return(true)
         planet.stub(:[]).with(2,3).and_return 'steve'
 
-        expect { subject.move(3, 3, :right) }.to raise_error CurrentlyOccupiedError
+        expect { subject.move(3, 3, :right) }.to raise_error Tordoid::CellMover::CurrentlyOccupiedError
       end
     end
 
@@ -93,7 +93,7 @@ describe Tordoid::CellMover do
         planet.stub(:occupied?).with(3,2).and_return(true)
         planet.stub(:occupied?).with(3,4).and_return(true)
 
-        subject.cell_navigator.stub(:select_random_coordinate_from_set) { [2,3] }
+        Tordoid::SelectRandomCoordinate.stub(:from_set) { [2,3] }
         subject.should_receive(:transport).with(3,3,2,3)
 
         subject.move_at_random(3,3)
@@ -105,7 +105,7 @@ describe Tordoid::CellMover do
         planet.stub(:occupied?).with(3,2).and_return(false)
         planet.stub(:occupied?).with(3,4).and_return(false)
 
-        subject.cell_navigator.stub(:select_random_coordinate_from_set) { [3,4] }
+        Tordoid::SelectRandomCoordinate.stub(:from_set) { [3,4] }
         subject.should_receive(:transport).with(3,3,3,4)
 
         subject.move_at_random(3,3)

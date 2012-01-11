@@ -1,7 +1,5 @@
 module Tordoid
   class CellNavigator
-    class CurrentlyOccupiedError < StandardError; end
-
     def initialize(planet)
       @planet = planet
     end
@@ -13,14 +11,9 @@ module Tordoid
     def select_random_empty_coordinate(set_of_coordinates)
       return false if empty_neighbor_cells(x, y) == []
 
-      new_x, new_y = select_random_coordinate_from_set empty_neighbor_cells(x,y)
+      new_x, new_y = Tordoid::SelectRandomCoordinate.from_set set empty_neighbor_cells(x,y)
 
       transport(x, y, new_x, new_y)
-    end
-
-    def select_random_coordinate_from_set(set_of_coordinates)
-      selected_coordinate = set_of_coordinates.sample
-      [selected_coordinate[0], selected_coordinate[1]]
     end
 
     def neighbors(x, y)
