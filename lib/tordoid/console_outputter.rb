@@ -13,8 +13,8 @@ module Tordoid
       gets
     end
 
-    def self.new_line
-      print "\n"
+    def self.new_line(times = 1)
+      print "\n" * times
     end
 
     def self.move_cursor_up(num_lines) 

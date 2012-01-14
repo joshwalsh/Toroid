@@ -12,21 +12,20 @@ trap "INT" do
   exit
 end
 
-Tordoid::ConsoleOutputter.new_line
-
 session = Tordoid::Game.new width, height, population
 
+Tordoid::ConsoleOutputter.new_line
 loop do
   session.run 1
   render = Tordoid::PlanetRenderer.new session.planet
 
   Tordoid::ConsoleOutputter.output render.render
+  Tordoid::ConsoleOutputter.new_line(3)
+  Tordoid::ConsoleOutputter.output("==" * width)
   Tordoid::ConsoleOutputter.new_line
-  Tordoid::ConsoleOutputter.output "#{session.planet.generation} YEARS OLD"
-
+  Tordoid::ConsoleOutputter.output "GENERATION: #{session.planet.generation}"
   Tordoid::ConsoleOutputter.flush
-
   Tordoid::ConsoleOutputter.move_cursor_up(height)
   gets
-  Tordoid::ConsoleOutputter.move_cursor_up(1)
+  Tordoid::ConsoleOutputter.move_cursor_up(4)
 end

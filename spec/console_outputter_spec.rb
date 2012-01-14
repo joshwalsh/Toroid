@@ -16,6 +16,11 @@ describe Tordoid::ConsoleOutputter do
       Tordoid::ConsoleOutputter.should_receive(:print).with("\n")
       Tordoid::ConsoleOutputter.new_line
     end
+
+    it "writes multiple new lines" do
+      Tordoid::ConsoleOutputter.should_receive(:print).with("\n\n\n")
+      Tordoid::ConsoleOutputter.new_line(3)
+    end
   end
 
   context 'cursor movement' do
