@@ -36,7 +36,7 @@ describe Tordoid::Planet do
     it 'removes an organism from the grid' do
       subject[3,6] = 'x'
       subject[3,6] = nil
-      
+
       subject.should be_empty
     end
   end
@@ -46,7 +46,7 @@ describe Tordoid::Planet do
       subject[0,2] = 'x'
       subject.row(2).should == ['x',nil,nil,nil,nil,nil,nil,nil,nil,nil]
     end
-    
+
     it "lists the cells in a column" do
       subject[2,0] = 'x'
       subject.column(2).should == ['x',nil,nil,nil,nil,nil,nil,nil,nil,nil]
