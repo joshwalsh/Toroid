@@ -1,6 +1,5 @@
 require 'yaml'
 require 'pathname'
-#require 'tordoid/select_random_coordinate'
 
 module Tordoid
   autoload :CellNavigator, "tordoid/cell_navigator"
@@ -11,6 +10,7 @@ module Tordoid
   autoload :Game, "tordoid/game"
   autoload :PlanetPopulator, "tordoid/planet_populator"
   autoload :PlanetRenderer, "tordoid/planet_renderer"
+  autoload :PlanetStats, "tordoid/planet_stats"
   autoload :SelectRandomCoordinate, "tordoid/select_random_coordinate"
 
   def self.app_root

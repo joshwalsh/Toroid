@@ -53,21 +53,12 @@ describe Tordoid::Planet do
     end 
   end
 
-  context "understands the population" do
+  context "occupied cells" do
     it "lists the occupied cells" do
       subject[0,1] = 'x'
       subject[0,2] = 'x'
 
       subject.occupied_cells.should == {[0,1] => 'x', [0,2] => 'x'}
-    end
-
-    it "counts occupied cells" do
-      subject[0,1] = 'x'
-      subject[0,2] = 'x'
-      subject[1,1] = 'x'
-      subject[2,2] = 'x'
-
-      subject.occupied_cells.count.should == 4
     end
   end
 
