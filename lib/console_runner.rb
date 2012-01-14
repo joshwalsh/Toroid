@@ -1,5 +1,5 @@
 class ConsoleRunner
-  include Tordoid::ConsoleOutput
+  include Tordoid::Console
 
   def main
     width = Tordoid.config.width || request_value("Board width: ").to_i

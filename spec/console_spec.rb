@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 class ConsoleOutputTest
-  include Tordoid::ConsoleOutput
+  include Tordoid::Console
 end
 
-describe Tordoid::ConsoleOutput do
+describe Tordoid::Console do
 
   subject { ConsoleOutputTest.new }
 

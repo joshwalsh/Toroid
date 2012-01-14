@@ -1,5 +1,5 @@
 module Tordoid
-  module ConsoleOutput
+  module Console
     def flush
       STDOUT.flush
     end
