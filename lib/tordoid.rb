@@ -5,7 +5,7 @@ module Tordoid
   autoload :CellNavigator, "tordoid/cell_navigator"
   autoload :CellMover, "tordoid/cell_mover"
   autoload :Config, "tordoid/config"
-  autoload :ConsoleOutputter, "tordoid/console_outputter"
+  autoload :ConsoleOutput, "tordoid/console_output"
   autoload :Planet, "tordoid/planet"
   autoload :Game, "tordoid/game"
   autoload :PlanetPopulator, "tordoid/planet_populator"
