@@ -5,5 +5,3 @@ gem 'cucumber'
 
 gem 'autotest-standalone'
 gem 'autotest-growl'
-
-gem 'fuubar'
