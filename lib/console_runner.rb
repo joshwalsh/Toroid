@@ -23,7 +23,7 @@ class ConsoleRunner
       new_line(3)
       output("==" * width)
       new_line
-      output "GENERATION: #{game.planet.generation}"
+      output "YEAR: #{game.planet.year}"
       new_line
       output "POPULATION:: #{statistics.population}"
       new_line

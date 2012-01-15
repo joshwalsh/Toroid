@@ -1,12 +1,12 @@
 module Toroid
   class Planet
     class OutOfBoundsError < StandardError; end
-    attr_reader :width, :height, :generation
+    attr_reader :width, :height, :year
 
     def initialize(x, y)
       @width, @height = x, y
       @grid = Hash.new
-      @generation = 0
+      @year = 0
     end
 
     def [](x,y)
@@ -72,7 +72,7 @@ module Toroid
     end
 
     def age(years = 1)
-      @generation += years
+      @year += years
     end
   end
 end

@@ -35,5 +35,5 @@ Then /^I should have a planet with (\d+) organisms$/ do |number_organisms|
 end
 
 Then /^the planet should be (\d+) years older$/ do |years|
-  @game.planet.generation.should == years.to_i
+  @game.planet.year.should == years.to_i
 end

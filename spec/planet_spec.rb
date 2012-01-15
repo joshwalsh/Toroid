@@ -62,10 +62,10 @@ describe Toroid::Planet do
     end
   end
 
-  context "generations" do
+  context "years" do
     it "ages over time" do
       subject.age 3
-      subject.generation.should == 3
+      subject.year.should == 3
     end
   end
 end
