@@ -1,44 +1,67 @@
 class ConsoleRunner
   include Toroid::Console
 
-  def main
-    width = Toroid.config.width || request_value("Board width: ").to_i
-    height = Toroid.config.height || request_value("Board height: ").to_i
-    population = Toroid.config.population || request_value("Population: ").to_i
+  def initialize
+    get_setup_parameters
 
-    trap "INT" do
-      move_cursor_down(height)
-      exit
-    end
+    @game = Toroid::Game.new @width, @height, @population
+    @statistics = Toroid::PlanetStats.new @game.planet
+    @renderer = Toroid::PlanetRenderer.new @game.planet
+  end
 
-    game = Toroid::Game.new width, height, population
-    statistics = Toroid::PlanetStats.new game.planet
-
+  def run
     new_line
     loop do
-      game.run 1
-      render = Toroid::PlanetRenderer.new game.planet
+      @game.run 1
 
-      output render.render
-      new_line(3)
-      output("==" * width)
-      new_line
-      output "YEAR: #{game.planet.year}"
-      new_line
-      output "POPULATION:: #{statistics.population}"
-      new_line
-      output("==" * width)
-      new_line
-      output("  " * width)
-      new_line
-      move_cursor_up(1)
-      output(">> ")
+      render_board
+      render_statistics
+
       flush
 
-      gets
-      move_cursor_up(height)
-      move_cursor_up(7)
+      command = prompt_for_command
+
+      exit if command == 'q'
+
+      move_cursor_up(@height + 7)
     end
+  end
+
+  def terminate
+    move_cursor_down(@height)
+  end
+
+  private
+
+  def get_setup_parameters
+    @width = Toroid.config.width || request_value("Board width: ").to_i
+    @height = Toroid.config.height || request_value("Board height: ").to_i
+    @population = Toroid.config.population || request_value("Population: ").to_i
+  end
+
+  def render_board
+    output @renderer.render
+    new_line(3)
+  end
+
+  def render_statistics
+    output("==" * @width)
+    new_line
+    output "YEAR: #{@game.planet.year}"
+    new_line
+    output "POPULATION:: #{@statistics.population}"
+    new_line
+    output("==" * @width)
+    new_line
+    output("  " * @width)
+    new_line
+
+    move_cursor_up(1)
+  end
+
+  def prompt_for_command
+    output(">> ")
+    gets.strip
   end
 end
 

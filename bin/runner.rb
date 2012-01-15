@@ -4,4 +4,11 @@ $: << File.dirname(__FILE__) + "/../lib"
 require 'toroid'
 require 'console_runner'
 
-ConsoleRunner.new.main
+console = ConsoleRunner.new
+
+trap "INT" do
+  console.terminate
+  exit
+end
+
+console.run

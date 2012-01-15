@@ -8,8 +8,8 @@ module Toroid
       STDOUT.print output
     end
 
-    def request_value(question)
-      STDOUT.print question
+    def request_value(prompt)
+      STDOUT.print prompt
       STDIN.gets
     end
 
