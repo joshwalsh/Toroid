@@ -1,4 +1,4 @@
-class Tordoid::PlanetStats
+class Toroid::PlanetStats
   def initialize(planet)
     @planet = planet
   end

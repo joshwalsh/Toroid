@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class Config
     attr_reader :width, :height, :population, :years
 

@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class PlanetRenderer
     def initialize(planet)
       @planet = planet

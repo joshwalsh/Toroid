@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class PlanetPopulator
 
     def populate(number_organisms, planet)

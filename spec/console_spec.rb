@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 class ConsoleOutputTest
-  include Tordoid::Console
+  include Toroid::Console
 end
 
-describe Tordoid::Console do
+describe Toroid::Console do
 
   subject { ConsoleOutputTest.new }
 
@@ -15,8 +15,8 @@ describe Tordoid::Console do
 
   context 'simple output' do
     it "writes anything given to the output" do
-      STDOUT.should_receive(:print).with("Tordoid")
-      subject.output "Tordoid"
+      STDOUT.should_receive(:print).with("toroid")
+      subject.output "toroid"
     end
 
     it "writes a new line" do

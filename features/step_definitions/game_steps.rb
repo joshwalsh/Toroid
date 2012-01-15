@@ -3,15 +3,15 @@ Given /^I have not started a game$/ do
 end
 
 Given /^I have started a game$/ do
-  @game = Tordoid::Game.new 10, 10
+  @game = Toroid::Game.new 10, 10
 end
 
 Given /^I start a game with (\d+) organisms$/ do |arg1|
-  @game = Tordoid::Game.new 10, 10, 15
+  @game = Toroid::Game.new 10, 10, 15
 end
 
 When /^I start a game$/ do
-  @game = Tordoid::Game.new
+  @game = Toroid::Game.new
 end
 
 When /^I add an organism to the planet$/ do

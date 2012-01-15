@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Tordoid::Game do
-  subject { Tordoid::Game.new 10, 10 }
+describe Toroid::Game do
+  subject { Toroid::Game.new 10, 10 }
 
   context 'new game' do
     it "creates a planet" do

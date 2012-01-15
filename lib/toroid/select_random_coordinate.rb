@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class SelectRandomCoordinate
       def self.from_set(set_of_coordinates)
         selected_coordinate = set_of_coordinates.sample

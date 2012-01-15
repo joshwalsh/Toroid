@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   module Console
     def flush
       STDOUT.flush

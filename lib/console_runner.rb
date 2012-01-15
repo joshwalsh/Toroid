@@ -1,23 +1,23 @@
 class ConsoleRunner
-  include Tordoid::Console
+  include Toroid::Console
 
   def main
-    width = Tordoid.config.width || request_value("Board width: ").to_i
-    height = Tordoid.config.height || request_value("Board height: ").to_i
-    population = Tordoid.config.population || request_value("Population: ").to_i
+    width = Toroid.config.width || request_value("Board width: ").to_i
+    height = Toroid.config.height || request_value("Board height: ").to_i
+    population = Toroid.config.population || request_value("Population: ").to_i
 
     trap "INT" do
       move_cursor_down(height)
       exit
     end
 
-    game = Tordoid::Game.new width, height, population
-    statistics = Tordoid::PlanetStats.new game.planet
+    game = Toroid::Game.new width, height, population
+    statistics = Toroid::PlanetStats.new game.planet
 
     new_line
     loop do
       game.run 1
-      render = Tordoid::PlanetRenderer.new game.planet
+      render = Toroid::PlanetRenderer.new game.planet
 
       output render.render
       new_line(3)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Tordoid::Planet do
-  subject { Tordoid::Planet.new(10,10) }
+describe Toroid::Planet do
+  subject { Toroid::Planet.new(10,10) }
 
   context 'is empty' do
     it { should be_empty }
@@ -24,13 +24,13 @@ describe Tordoid::Planet do
     it 'does not allow setting an organism outside the grid' do
       lambda {
         subject[14,18] = 'x'
-      }.should raise_error(Tordoid::Planet::OutOfBoundsError)
+      }.should raise_error(Toroid::Planet::OutOfBoundsError)
     end
 
     it 'does not allow reading outside the grid' do
       lambda {
         subject[14,18]
-      }.should raise_error(Tordoid::Planet::OutOfBoundsError)
+      }.should raise_error(Toroid::Planet::OutOfBoundsError)
     end
 
     it 'removes an organism from the grid' do

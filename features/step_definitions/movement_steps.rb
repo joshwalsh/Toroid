@@ -5,7 +5,7 @@ Given /^there is an organism on the board$/ do
 end
 
 Given /^the system will navigate it to an adjacent cell$/ do
-  Tordoid::SelectRandomCoordinate.stub(:from_set) { [2,3] }
+  Toroid::SelectRandomCoordinate.stub(:from_set) { [2,3] }
 end
 
 Then /^it should not be where it started$/ do

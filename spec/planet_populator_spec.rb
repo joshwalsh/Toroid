@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Tordoid::PlanetPopulator do
+describe Toroid::PlanetPopulator do
 
   describe "coordinate selector" do
     let(:width) { 10 }

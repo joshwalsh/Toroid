@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class CellMover
     class CurrentlyOccupiedError < StandardError; end
 
@@ -31,7 +31,7 @@ module Tordoid
       empty_neighbor_cells = cell_navigator.empty_neighbor_cells(x, y)
       return false if empty_neighbor_cells == []
 
-      new_x, new_y = Tordoid::SelectRandomCoordinate.from_set empty_neighbor_cells
+      new_x, new_y = Toroid::SelectRandomCoordinate.from_set empty_neighbor_cells
 
       transport(x, y, new_x, new_y)
     end

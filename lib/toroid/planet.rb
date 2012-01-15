@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class Planet
     class OutOfBoundsError < StandardError; end
     attr_reader :width, :height, :generation

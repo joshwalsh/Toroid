@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Tordoid::PlanetRenderer do
-  let(:renderer) { Tordoid::PlanetRenderer.new planet }
+describe Toroid::PlanetRenderer do
+  let(:renderer) { Toroid::PlanetRenderer.new planet }
 
   context "rendering a single row" do
     context "one column" do

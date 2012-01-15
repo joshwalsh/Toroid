@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class Game
     attr_accessor :planet
     attr_accessor :cell_mover, :planet_populator

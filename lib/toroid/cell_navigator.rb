@@ -1,4 +1,4 @@
-module Tordoid
+module Toroid
   class CellNavigator
     def initialize(planet)
       @planet = planet
@@ -11,7 +11,7 @@ module Tordoid
     def select_random_empty_coordinate(set_of_coordinates)
       return false if empty_neighbor_cells(x, y) == []
 
-      new_x, new_y = Tordoid::SelectRandomCoordinate.from_set set empty_neighbor_cells(x,y)
+      new_x, new_y = Toroid::SelectRandomCoordinate.from_set set empty_neighbor_cells(x,y)
 
       transport(x, y, new_x, new_y)
     end

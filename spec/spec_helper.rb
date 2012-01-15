@@ -1,3 +1,3 @@
 $: << File.dirname(__FILE__) + "/../lib"
 
-require 'tordoid'
+require 'toroid'

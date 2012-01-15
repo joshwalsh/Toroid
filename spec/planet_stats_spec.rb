@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Tordoid::PlanetStats do
-  let(:planet) { Tordoid::Planet.new(10,10) }
-  subject { Tordoid::PlanetStats.new planet }
+describe Toroid::PlanetStats do
+  let(:planet) { Toroid::Planet.new(10,10) }
+  subject { Toroid::PlanetStats.new planet }
 
   describe '#population' do 
     it "reports the number of organisms on the planet" do
