@@ -19,9 +19,9 @@ class ConsoleRunner
 
       flush
 
-      command = prompt_for_command
+      command = ConsoleCommand.new prompt_for_command
 
-      exit if command == 'q'
+      exit if command.terminated?
 
       move_cursor_up(@height + 7)
     end
