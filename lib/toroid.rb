@@ -12,6 +12,7 @@ module Toroid
   autoload :PlanetRenderer, "toroid/planet_renderer"
   autoload :PlanetStats, "toroid/planet_stats"
   autoload :SelectRandomCoordinate, "toroid/select_random_coordinate"
+  autoload :Organism, "toroid/organism"
 
   def self.app_root
     Pathname.new File.expand_path(File.dirname(__FILE__) + "/../")

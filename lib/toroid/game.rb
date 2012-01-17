@@ -15,11 +15,6 @@ module Toroid
       end
     end
 
-    # Treat these two method definitions as "convenience"
-    # initializers to give you the two collaborators
-    # you were instantiating inline. You can now inject
-    # custom or stubbed versions of these instances in
-    # your test code.
     def cell_mover
       @cell_mover ||= CellMover.new @planet
     end
