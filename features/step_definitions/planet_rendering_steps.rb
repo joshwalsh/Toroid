@@ -4,8 +4,8 @@ end
 
 Given "I have a small planet" do
   @planet = Toroid::Planet.new 3,3
-  @planet[1,1] = 'x'
-  @planet[2,2] = 'x'
+  @planet[1,1] = Toroid::Organism.new
+  @planet[2,2] = Toroid::Organism.new
 end
 
 When "I render the planet" do

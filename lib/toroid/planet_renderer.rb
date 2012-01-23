@@ -9,7 +9,7 @@ module Toroid
         if cell.nil? 
           '. '
         else 
-          cell.to_s + ' '
+          cell.render + ' '
         end
       end.join.strip
     end

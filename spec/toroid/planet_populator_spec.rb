@@ -1,30 +1,19 @@
 require 'spec_helper'
 
 describe Toroid::PlanetPopulator do
-
-  describe "coordinate selector" do
-    let(:width) { 10 }
-    let(:height) { 10 }
-
-    it "generates a random coordinate" do
-      x,y = subject.generate_random_coordinate(width, height)
-
-      (0...width).should cover(y)
-      (0...height).should cover(y)
-    end
-  end
- 
   context "populating with known coordinates" do
     let(:planet) { stub Hash.new, width: 10, height: 10 }
 
     before do
       subject.stub(:generate_random_coordinate).and_return(*coordinates)
+      subject.stub create_organism: 'x'
     end
 
     describe "3x3 board, 1 organism" do
       let(:coordinates) { [[0,0]] }
       it "populates 1 space" do
         subject.stub generate_random_coordinate: [0,0]
+
         subject.populate(1, planet)[[0,0]].should == 'x'
       end
     end
@@ -53,6 +42,10 @@ describe Toroid::PlanetPopulator do
 
   context "populating with random coordinates" do
     let(:planet) { stub Hash.new, width: 10, height: 10 }
+
+    before do
+      subject.stub create_organism: 'x'
+    end
 
     describe "3x3 board, 1 organism" do
       it "populates 1 space" do

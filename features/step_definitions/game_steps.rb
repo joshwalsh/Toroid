@@ -15,7 +15,8 @@ When /^I start a game$/ do
 end
 
 When /^I add an organism to the planet$/ do
-  @game.planet[0,0] = 'barb'
+  @org = Toroid::Organism.new
+  @game.planet[0,0] = @org
 end
 
 When /^the planet ages (\d+) years*$/ do |days|
@@ -27,7 +28,7 @@ Then /^I should have an empty planet$/ do
 end
 
 Then /^it should exist on the planet$/ do
-  @game.planet[0,0].should == 'barb'
+  @game.planet[0,0].should == @org
 end
 
 Then /^I should have a planet with (\d+) organisms$/ do |number_organisms|
