@@ -14,11 +14,16 @@ end
 
 gem 'jquery-rails'
 
-gem "rspec-rails", group: [:test, :development]
-
-group :test do
+group :test, :development do
   gem "factory_girl_rails"
-  gem "capybara"
-  gem "cucumber"
+  gem "rspec-rails"
   gem "guard-rspec"
+end
+
+group :cucumber do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'launchy'
 end
