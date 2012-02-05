@@ -6,4 +6,12 @@ class Planet < ActiveRecord::Base
   def size
     width * height
   end
+
+  def place_organism(x,y,organism)
+    organism.x = x
+    organism.y = y
+    organism.save
+
+    organisms << organism
+  end
 end
