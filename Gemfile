@@ -18,6 +18,7 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "rspec-rails"
   gem "guard-rspec"
+  gem "growl"
 end
 
 group :cucumber do
