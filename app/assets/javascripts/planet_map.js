@@ -1,8 +1,8 @@
 var PlanetMap = {
-  pixelDimension: 40,
-  gap: 10, 
+  pixelDimension: 20,
+  gap: 5, 
 
-  initialize: function($canvas, width, height) {
+  setup: function($canvas, width, height) {
     this.$canvas = $canvas;
     this.context = this.$canvas[0].getContext('2d');
 
@@ -13,7 +13,16 @@ var PlanetMap = {
     this.$canvas.attr('height', this.height * this._pixelsPerPoint());
   },
 
-  renderMap : function() {
+  renderMap: function(organisms) {
+    this._renderBlankMap();
+
+    var map = this;
+    $(organisms).each(function(index, organism) {
+      map._renderOccupiedPoint(organism);
+    });
+  },
+
+  _renderBlankMap : function() {
     this.context.beginPath();
 
     for (x = 0; x < this.width; x++) {
@@ -28,22 +37,22 @@ var PlanetMap = {
     this.context.closePath();
   },
 
-  renderOccupiedPoint: function(x, y) {
-    this.context.beginPath();
-
-    this._renderPoint(x, y);
-
-    this.context.fillStyle = "#888888";
-    this.context.fill();
-
-    this.context.closePath();
-  },
-
   _renderPoint: function(x, y) {
     var pixelX = this._plotPoint(x);
     var pixelY = this._plotPoint(y);
 
     this.context.rect(pixelX, pixelY, this.pixelDimension, this.pixelDimension);
+  },
+
+  _renderOccupiedPoint: function(organism) {
+    this.context.beginPath();
+
+    this._renderPoint(organism.x, organism.y);
+
+    this.context.fillStyle = "#888888";
+    this.context.fill();
+
+    this.context.closePath();
   },
 
   _plotPoint: function(coordinate) {

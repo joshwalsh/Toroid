@@ -1,15 +1,9 @@
-<% content_for :head do %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-        PlanetMap.initialize($('#planet_map'), <%= @planet.width %>, <%= @planet.height %>);
-        PlanetMap.renderMap();
-
-        <% @planet.organisms.each do |organism| %>
-          PlanetMap.renderOccupiedPoint(<%= organism.x %>, <%= organism.y %>);
-        <% end %>
-    });
-  </script>
-<% end %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    PlanetMap.setup($('#planet_map'), <%= @planet.width %>, <%= @planet.height %>);
+    PlanetMap.renderMap(<%= @planet.organisms.to_json.html_safe %>);
+  });
+</script>
 
 <h1><%= @planet.name %></h1>
 
