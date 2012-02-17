@@ -18,6 +18,10 @@ Given /^the planet has organisms with attributes:$/ do |table|
   @planet.save
 end
 
+Then /^I should see a visual representation of the planet$/ do
+  page.should have_selector("canvas")
+end
+
 Then /^I should see a list of organisms:$/ do |table|
   table.hashes.each do |organism|
     page.should have_content(organism[:name])

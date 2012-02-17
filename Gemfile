@@ -19,6 +19,7 @@ group :test, :development do
   gem "rspec-rails"
   gem "guard-rspec"
   gem "growl"
+  gem "jasmine"
 end
 
 group :cucumber do

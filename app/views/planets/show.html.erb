@@ -1,4 +1,19 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        PlanetMap.initialize($('#planet_map'), <%= @planet.width %>, <%= @planet.height %>);
+        PlanetMap.renderMap();
+
+        <% @planet.organisms.each do |organism| %>
+          PlanetMap.renderOccupiedPoint(<%= organism.x %>, <%= organism.y %>);
+        <% end %>
+    });
+  </script>
+<% end %>
+
 <h1><%= @planet.name %></h1>
+
+<canvas id="planet_map"></canvas>
 
 <ul>
   <% @planet.organisms.each do |organism| %>
