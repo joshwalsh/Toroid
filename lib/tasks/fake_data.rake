@@ -1,7 +1,9 @@
 task :fake_data  => :environment do
   p = Planet.new
   p.name = "Earth"
-  p.save
+  p.width = 10
+  p.height = 10
+  p.save!
 
   josh = Organism.new
   josh.name = "Josh"

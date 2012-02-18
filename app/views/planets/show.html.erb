@@ -1,13 +1,13 @@
 <script type="text/javascript">
   $(document).ready(function() {
-    PlanetMap.setup($('#planet_map'), <%= @planet.width %>, <%= @planet.height %>);
+    PlanetMap.setup('planet_map', <%= @planet.width %>, <%= @planet.height %>);
     PlanetMap.renderMap(<%= @planet.organisms.to_json.html_safe %>);
   });
 </script>
 
 <h1><%= @planet.name %></h1>
 
-<canvas id="planet_map"></canvas>
+<div id="planet_map"></div>
 
 <ul>
   <% @planet.organisms.each do |organism| %>

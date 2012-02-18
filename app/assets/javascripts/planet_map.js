@@ -2,15 +2,11 @@ var PlanetMap = {
   pixelDimension: 40,
   gap: 10, 
 
-  setup: function($canvas, width, height) {
-    this.$canvas = $canvas;
-    this.context = this.$canvas[0].getContext('2d');
+  setup: function(canvas_id, width, height) {
+    this.paper = new Raphael(canvas_id, width * this._pixelsPerPoint(), height * this._pixelsPerPoint());
 
     this.width = width;
     this.height = height;
-
-    this.$canvas.attr('width', this.width * this._pixelsPerPoint());
-    this.$canvas.attr('height', this.height * this._pixelsPerPoint());
   },
 
   renderMap: function(organisms) {
@@ -18,41 +14,32 @@ var PlanetMap = {
 
     var map = this;
     $(organisms).each(function(index, organism) {
-      map._renderOccupiedPoint(organism);
+      map._renderOccupiedCell(organism);
     });
   },
 
   _renderBlankMap : function() {
-    this.context.beginPath();
-
     for (x = 0; x < this.width; x++) {
       for (y = 0; y < this.height; y++) {
-        this._renderPoint(x, y);
+        this._renderBlankCell(x, y);
       }
     }
-
-    this.context.fillStyle = "#eeeeee";
-    this.context.fill();
-
-    this.context.closePath();
   },
 
-  _renderPoint: function(x, y) {
+  _renderBlankCell: function(x, y) {
+    this._renderCell(x, y, {fill: '#eee', 'stroke-width': 0});
+  },
+
+  _renderOccupiedCell: function(organism) {
+    this._renderCell(organism.x, organism.y, {fill: '#888', 'stroke-width': 0});
+  },
+
+  _renderCell: function(x, y, style) {
     var pixelX = this._plotPoint(x);
     var pixelY = this._plotPoint(y);
 
-    this.context.rect(pixelX, pixelY, this.pixelDimension, this.pixelDimension);
-  },
-
-  _renderOccupiedPoint: function(organism) {
-    this.context.beginPath();
-
-    this._renderPoint(organism.x, organism.y);
-
-    this.context.fillStyle = "#888888";
-    this.context.fill();
-
-    this.context.closePath();
+    var box = this.paper.rect(pixelX, pixelY, this.pixelDimension, this.pixelDimension);
+    box.attr(style);
   },
 
   _plotPoint: function(coordinate) {

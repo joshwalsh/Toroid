@@ -1,6 +1,6 @@
 class Planet < ActiveRecord::Base
   has_many :organisms
-  validates :name, presence: true
+  validates :name, :width, :height, presence: true
 
   def size
     width * height
