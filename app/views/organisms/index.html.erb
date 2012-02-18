@@ -1,0 +1,7 @@
+<h1>Organisms in <%= @planet.name %></h1>
+
+<ul>
+<% @organisms.each do |organism| %>
+  <li><%= organism.name %></li>
+<% end %>
+</ul>

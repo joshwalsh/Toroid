@@ -31,3 +31,7 @@ end
 When /^I view the planets list page$/ do
   visit planets_path
 end
+
+When /^I view the page with organisms scoped by planet$/ do
+  visit planet_organisms_path @planet
+end

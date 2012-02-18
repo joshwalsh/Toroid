@@ -1,5 +1,7 @@
 Toroid::Application.routes.draw do
-  resources :planets
+  resources :planets, only: [:show, :index] do
+    resources :organisms, only: [:index]
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
