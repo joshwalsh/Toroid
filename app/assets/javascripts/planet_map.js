@@ -1,6 +1,6 @@
 var PlanetMap = {
-  pixelDimension: 20,
-  gap: 5, 
+  pixelDimension: 40,
+  gap: 10, 
 
   setup: function($canvas, width, height) {
     this.$canvas = $canvas;

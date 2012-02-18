@@ -27,3 +27,7 @@ Then /^I should see a list of organisms:$/ do |table|
     page.should have_content(organism[:name])
   end
 end
+
+When /^I view the planets list page$/ do
+  visit planets_path
+end

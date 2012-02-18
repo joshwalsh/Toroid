@@ -1,5 +1,18 @@
 Feature: Planet
 
+  Scenario: List all planets
+    Given a planet exists with attributes:
+      | name   | Earth |
+      | width  | 10    |
+      | height | 10    |
+    And a planet exists with attributes:
+      | name   | Mars  |
+      | width  | 20    |
+      | height | 20    |
+    When I view the planets list page
+    Then I should see the planets name: "Earth"
+    And I should see the planets name: "Mars"
+    
   Scenario: Show details of planet
     Given a planet exists with attributes:
       | name   | Earth |
