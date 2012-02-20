@@ -1,4 +1,8 @@
 task :fake_data  => :environment do
+  game = Game.new
+  game.year = 1
+  game.save!
+
   p = Planet.new
   p.name = "Earth"
   p.width = 10

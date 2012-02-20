@@ -68,7 +68,7 @@ GEM
       factory_girl (~> 2.5.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
-    gherkin (2.4.16)
+    gherkin (2.4.21)
       json (>= 1.4.6)
     growl (1.0.3)
     guard (1.0.0)
