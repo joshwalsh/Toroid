@@ -1,7 +1,20 @@
 require 'spec_helper'
 
 describe Planet do
-  subject { Planet.new }
+  subject { 
+    Planet.new(name: "Earth", width: 10, height: 10)
+  }
+ 
+  context "Creation" do
+    it "records the year of its birth" do
+      game = double('game')
+      game.stub(:year => 3)
+      Game.stub(:current => game)
+
+      subject.save
+      subject.birth_year.should eq(3)
+    end
+  end
 
   context "Size" do
     it "has a size of 100 when width and height are 10" do
