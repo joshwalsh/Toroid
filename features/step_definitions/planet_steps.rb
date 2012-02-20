@@ -10,16 +10,20 @@ Then /^I should see the planets name: "([^"]*)"$/ do |name|
   page.should have_content(name)
 end
 
+Then /^I should see the planets birth year: "([^"]*)"$/ do |birth_year|
+  page.should have_content("Birth Year: #{birth_year}")
+end
+
+Then /^I should see the planets age: "([^"]*)"$/ do |age|
+  page.should have_content("Age: #{age}")
+end
+
 Given /^the planet has organisms with attributes:$/ do |table|
   table.hashes.each do |attributes|
     @planet.organisms.build attributes
   end
 
   @planet.save
-end
-
-Then /^I should see a visual representation of the planet$/ do
-  page.should have_selector("canvas")
 end
 
 Then /^I should see a list of organisms:$/ do |table|

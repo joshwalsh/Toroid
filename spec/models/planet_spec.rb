@@ -1,18 +1,28 @@
 require 'spec_helper'
 
 describe Planet do
+  let(:game) {
+    game = double('game')
+    Game.stub(:current => game)
+    game
+  }
   subject { 
     Planet.new(name: "Earth", width: 10, height: 10)
   }
  
-  context "Creation" do
+  context "Age" do
     it "records the year of its birth" do
-      game = double('game')
       game.stub(:year => 3)
-      Game.stub(:current => game)
 
       subject.save
       subject.birth_year.should eq(3)
+    end
+
+    it "knows it's age" do
+      game.stub(:year => 10)
+
+      subject.birth_year = 3
+      subject.age.should eq(7)
     end
   end
 

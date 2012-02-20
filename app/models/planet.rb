@@ -7,6 +7,11 @@ class Planet < ActiveRecord::Base
     width * height
   end
 
+  def age
+    game = Game.current
+    game.year - birth_year
+  end
+
   def place_organism(x,y,organism)
     organism.x = x
     organism.y = y

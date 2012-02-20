@@ -1,5 +1,11 @@
 class Game < ActiveRecord::Base
   def self.current
-   @game = find(1) 
+    @game = last
+
+    if @game.nil?
+      @game = Game.create(year: 1)
+    end
+
+    @game
   end
 end
