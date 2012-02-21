@@ -34,7 +34,6 @@ describe Planet do
     end
   end
 
-  # TODO: Refactor onto organism object
   context "Organism Placement" do
     let(:organism) { Organism.new name: "josh" }
 

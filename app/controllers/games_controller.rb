@@ -5,7 +5,7 @@ class GamesController < ApplicationController
 
   def advance
     @game = Game.current
-    @game.year += 1
+    @game.run_for_years
     @game.save
 
     render :show

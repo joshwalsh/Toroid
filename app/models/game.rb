@@ -8,4 +8,10 @@ class Game < ActiveRecord::Base
 
     @game
   end
+
+  def run_for_years(years = 1)
+    years.times do 
+      self.year += 1
+    end
+  end
 end
