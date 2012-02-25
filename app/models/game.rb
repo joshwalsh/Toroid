@@ -12,6 +12,7 @@ class Game < ActiveRecord::Base
   def run_for_years(years = 1)
     years.times do 
       self.year += 1
+      Log.record "TIME: Year #{self.year}"
     end
   end
 end

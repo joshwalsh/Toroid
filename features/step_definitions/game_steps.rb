@@ -15,3 +15,11 @@ end
 Then /^the current year should be (\d+)$/ do |year|
   page.should have_content("Year: #{year}")
 end
+
+When /^I visit the game logs$/ do
+  visit game_logs_path
+end
+
+Then /^the time log should include "([^"]*)"$/ do |log_line|
+  page.should have_content(log_line)
+end
