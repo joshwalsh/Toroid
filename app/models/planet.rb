@@ -20,6 +20,10 @@ class Planet < ActiveRecord::Base
     organisms << organism
   end
 
+  def run
+    Log.record "PLANET: #{name}: Age #{age}"
+  end
+
   private
 
   def setup_creation_attributes
