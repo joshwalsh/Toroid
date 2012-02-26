@@ -26,6 +26,10 @@ Given /^the planet has organisms with attributes:$/ do |table|
   @planet.save
 end
 
+Given /^the planet has an organism with attributes:$/ do |table|
+  Given "the planet has organisms with attributes:", table
+end
+
 Then /^I should see a list of organisms:$/ do |table|
   table.hashes.each do |organism|
     page.should have_content(organism[:name])

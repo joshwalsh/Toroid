@@ -1,7 +1,7 @@
 Feature: Planet
 
   Scenario: List all planets
-    And a planet exists with attributes:
+    Given a planet exists with attributes:
       | name   | Earth |
       | width  | 10    |
       | height | 10    |
