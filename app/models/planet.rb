@@ -12,14 +12,6 @@ class Planet < ActiveRecord::Base
     game.year - birth_year
   end
 
-  def place_organism(x,y,organism)
-    organism.x = x
-    organism.y = y
-    organism.save
-
-    organisms << organism
-  end
-
   def run
     Log.record "PLANET: #{name}: Age #{age}"
   end
