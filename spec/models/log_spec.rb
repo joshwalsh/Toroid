@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Logs do
+describe Log do
 end
