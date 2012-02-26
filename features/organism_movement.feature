@@ -10,6 +10,7 @@ Feature: Organism Movement
       | name | x | y |
       | josh | 5 | 4 |
     And the system will navigate the organism to an adjacent cell at 5, 5
+    When I visit the game page
     And I run the game for a year
     Then the organism should not be where it started
     And the organism should be moved to an adjacent cell

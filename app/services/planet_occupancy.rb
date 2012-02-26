@@ -10,4 +10,7 @@ class PlanetOccupancy
 
     @planet.organisms << organism
   end
+
+  def select_random_adjacent_coordinate(x, y)
+  end
 end

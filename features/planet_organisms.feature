@@ -1,6 +1,5 @@
 Feature: Planet Organisms
 
-@wip
 Scenario: List organisms on a planet
   Given a planet exists with attributes:
     | name   | Earth |
