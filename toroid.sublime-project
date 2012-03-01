@@ -1,0 +1,9 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Users/joshwalsh/Sites/toroid",
+      "folder_exclude_patterns": ["tmp", "log"]
+		}
+	]
+}
