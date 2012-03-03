@@ -27,7 +27,7 @@ step "the planet has organisms with attributes:" do |table|
 end
 
 step "the planet has an organism with attributes:" do |table|
-  Given "the planet has organisms with attributes:", table
+  step "the planet has organisms with attributes:", table
 end
 
 step "I should see a list of organisms:" do |table|

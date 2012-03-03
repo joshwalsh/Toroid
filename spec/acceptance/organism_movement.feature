@@ -9,7 +9,7 @@ Feature: Organism Movement
     And the planet has an organism with attributes:
       | name | x | y |
       | josh | 5 | 4 |
-    And the system will navigate the organism at 5,4 to 5, 5
+    And the system will navigate the organism at 5, 4 to 5, 5
     When I visit the game page
     And I run the game for a year
     Then the organism should not be at 5, 4
