@@ -18,10 +18,6 @@ step "the current year should be :current_year" do |current_year|
   page.should have_content("Year: #{current_year}")
 end
 
-step "a planet exists with attributes:" do |table|
-  @planet = Planet.create table.rows_hash
-end
-
 step "I visit the game logs" do 
   visit game_logs_path
 end
