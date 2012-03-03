@@ -24,4 +24,5 @@ end
 
 group :test do
   gem "turnip"
+  gem "capybara"
 end

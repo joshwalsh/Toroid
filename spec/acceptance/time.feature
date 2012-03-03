@@ -6,7 +6,7 @@ Feature: Time
     And I run the game for a year
     Then the current year should be 2
 
-
+    
   Scenario: Log advancing time
     Given the current year is 1
     And a planet exists with attributes:
