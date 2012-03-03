@@ -13,6 +13,7 @@ Feature: Planet
     Then I should see the planets name: "Earth"
     And I should see the planets name: "Mars"
     
+  @time
   Scenario: Show details of planet
     Given the current year is 1
     And a planet exists with attributes:
