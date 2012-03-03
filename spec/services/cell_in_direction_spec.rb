@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'lean_spec_helper'
+require 'app/services/cell_in_direction'
 
 describe CellInDirection do
   let(:planet) { mock() }

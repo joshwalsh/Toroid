@@ -9,7 +9,6 @@ class RunGame
 
   def for_year
     @game.year += 1
-    @game.save
 
     Log.record "TIME: Year #{@game.year}"
 
@@ -19,7 +18,7 @@ class RunGame
   private
 
   def run_planets(planets = nil)
-    planets ||= Planet.all
+    planets ||= @game.planets
 
     planets.each { |planet| run_planet(planet) }
   end

@@ -1,11 +1,8 @@
-class Game < ActiveRecord::Base
-  def self.current
-    @game = last
-    @game ||= Game.create(year: 1)
+class Game
+  attr_accessor :year
+  attr_accessor :planets
 
-    @game
+  def initialize
+    @planets = []
   end
-
-  private
-
 end

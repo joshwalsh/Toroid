@@ -1,11 +1,15 @@
-require 'spec_helper'
+require 'lean_spec_helper'
+require 'app/services/run_game'
+require 'app/models/game'
+require 'app/models/log'
+require 'app/models/planet'
 
 describe RunGame do
   context "Run" do
     let(:game) {
-      game = Game.current
-      game.year = 1
-      game
+      g = Game.new
+      g.year = 1
+      g
     }
     subject { RunGame.new game }
 

@@ -6,9 +6,16 @@ class PlanetOccupancy
   def place_organism(x, y, organism)
     organism.x = x
     organism.y = y
-    organism.save
 
     @planet.organisms << organism
+  end
+
+  def find_by_coordinate(x, y)
+    @planet.organisms.each do |organism|
+      return organism if organism.x == x && organism.y == y
+    end
+
+    return nil
   end
 
   def select_random_adjacent_coordinate(x, y)
@@ -22,7 +29,6 @@ class PlanetOccupancy
   def move_organism(organism, x, y)
     organism.x = x
     organism.y = y
-    organism.save
   end
 
   def organism_at_coordinate(x, y)

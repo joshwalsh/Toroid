@@ -1,20 +1,22 @@
-require 'spec_helper'
+require 'lean_spec_helper'
+require 'app/models/planet'
+require 'app/models/game'
 
 describe Planet do
   let(:game) {
-    game = double('game')
-    Game.stub(:current => game)
-    game
+    g = double('game')
+    g.stub(:year => 1)
+    g
   }
   subject { 
-    Planet.new(name: "Earth", width: 10, height: 10)
+    p = Planet.new(game)
+    p.name = "Earth"
+    p
   }
  
   context "Age" do
     it "records the year of its birth" do
       game.stub(:year => 3)
-
-      subject.save
       subject.birth_year.should eq(3)
     end
 
