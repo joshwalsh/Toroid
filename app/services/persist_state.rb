@@ -28,7 +28,7 @@ class PersistState
     content
   end
 
-  def self.FilePath
+  def self.file_path
     "#{Rails.root}/db/#{Rails.env}.yml"
   end
 end
