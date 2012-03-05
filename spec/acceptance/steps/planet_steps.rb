@@ -1,6 +1,13 @@
 steps_for :planet do
   step "a planet exists with attributes:" do |table|
-    @planet = Planet.create table.rows_hash
+    @planet = Planet.new @game
+
+    table.rows_hash.each do |key, value|
+      @planet.send(:"#{key}=", value)
+    end
+
+    @game.planets << @planet
+    PersistState.save(@game)
   end
 
   step "the planet has organisms with attributes:" do |table|

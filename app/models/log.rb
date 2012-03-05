@@ -1,4 +1,7 @@
 class Log
-  def self.record(message)
-  end
+  attr_accessor :activity
+  
+  def initialize(activity)
+    @activity = activity
+  end  
 end

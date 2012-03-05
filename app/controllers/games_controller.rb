@@ -9,6 +9,7 @@ class GamesController < ApplicationController
     runner = RunGame.new @game
     runner.for_year
 
+    PersistState.save(@game)
     render :show
   end
 end

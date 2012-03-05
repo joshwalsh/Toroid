@@ -5,7 +5,7 @@ steps_for :time do
 
   step "the current year is :year" do |year|
     @game = Game.current
-    @game.year = year
-    @game.save
+    @game.year = year.to_i
+    PersistState.save(@game)
   end
 end

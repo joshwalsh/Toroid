@@ -1,7 +1,8 @@
 Feature: Time
   
   Scenario: Game ages a day
-    Given the current year is 1
+    Given I visit the game page
+    And the current year is 1
     When I run the game for a year
     Then the current year should be 2
 

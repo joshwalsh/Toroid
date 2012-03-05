@@ -10,7 +10,7 @@ class RunGame
   def for_year
     @game.year += 1
 
-    Log.record "TIME: Year #{@game.year}"
+    @game.log "TIME: Year #{@game.year}"
 
     run_planets
   end
@@ -26,7 +26,7 @@ class RunGame
   def run_planet(planet)
     planet.organisms.each { |organism| run_organism(organism) }
 
-    Log.record "PLANET: #{planet.name}: Age #{planet.age}"
+    @game.log "PLANET: #{planet.name}: Age #{planet.age}"
   end
 
   def run_organism(organism)
@@ -38,6 +38,6 @@ class RunGame
 
     occupancy.move_organism(organism, new_coordinate[0], new_coordinate[1])
 
-    Log.record "PLANET: #{organism.planet.name}, ORGANISM: #{organism.name}, moved from #{x}, #{y} to #{organism.x}, #{organism.y}"
+    @game.log "PLANET: #{organism.planet.name}, ORGANISM: #{organism.name}, moved from #{x}, #{y} to #{organism.x}, #{organism.y}"
   end
 end

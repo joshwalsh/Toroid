@@ -1,5 +1,6 @@
 class LogsController < ApplicationController
   def game
-    @logs = Log.all
+    game = Game.current
+    @logs = game.logs
   end
 end

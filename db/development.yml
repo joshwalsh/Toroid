@@ -1,3 +1,11 @@
---- !ruby/object:Game
-planets: []
-year: 3
+--- &70238451466360 !ruby/object:Game
+planets:
+- !ruby/object:Planet
+  game: *70238451466360
+  birth_year: 1
+  organisms: []
+  name: Earth
+  width: 10
+  height: 10
+year: 1
+logs: []

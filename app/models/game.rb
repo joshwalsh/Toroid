@@ -1,14 +1,25 @@
-require 'app/services/persist_state'
-
 class Game
   attr_accessor :year
   attr_accessor :planets
+  attr_accessor :logs
 
   def initialize
     @planets = []
+    @year = 1
+    @logs = []
+  end
+
+  def log(activity)
+    @logs << Log.new(activity)
   end
 
   def self.current
-    PersistState.load || new
+    current_game = PersistState.load
+
+    if not current_game.instance_of? Game
+      current_game = new 
+    end
+
+    current_game
   end
 end
