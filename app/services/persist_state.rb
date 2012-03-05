@@ -22,14 +22,13 @@ class PersistState
   def self.load
     content = nil
 
-    begin
-      File.open(self.file_path, "r") do |game_content|
-        p = PersistState.new game_content
-        content = YAML::load(p.load)
-      end
-    rescue => err
-      File.open(self.file_path, "w+") do |file|
-      end
+    if not File.exists?(self.file_path)
+      File.open(self.file_path, "w+")
+    end
+
+    File.open(self.file_path, "r") do |game_content|
+      p = PersistState.new game_content
+      content = YAML::load(p.load)
     end
 
     content
