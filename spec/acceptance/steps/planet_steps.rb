@@ -12,10 +12,14 @@ steps_for :planet do
 
   step "the planet has organisms with attributes:" do |table|
     table.hashes.each do |attributes|
-      @planet.organisms.build attributes
-    end
+      organism = Organism.new
 
-    @planet.save
+      attributes.each do |key, value|
+        organism.send(:"#{key}=", value)
+      end
+
+      @planet.organisms << organism
+    end
   end
 
   step "the planet has an organism with attributes:" do |table|

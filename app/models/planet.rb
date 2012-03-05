@@ -10,6 +10,10 @@ class Planet
     @organisms = []
   end
 
+  def to_param
+    @game.planets.index self
+  end
+
   def size
     @width * @height
   end

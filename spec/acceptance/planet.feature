@@ -1,7 +1,8 @@
 Feature: Planet
 
   Scenario: List all planets
-    Given a planet exists with attributes:
+    Given the current year is 1
+    And a planet exists with attributes:
       | name   | Earth |
       | width  | 10    |
       | height | 10    |
@@ -13,7 +14,6 @@ Feature: Planet
     Then I should see the planets name: "Earth"
     And I should see the planets name: "Mars"
     
-  @time
   Scenario: Show details of planet
     Given the current year is 1
     And a planet exists with attributes:
@@ -27,6 +27,7 @@ Feature: Planet
     And I should see the planets age: "9"
 
   Scenario: Show organisms on planet
+    Given the current year is 1
     Given a planet exists with attributes:
       | name   | Earth |
       | width  | 10    |

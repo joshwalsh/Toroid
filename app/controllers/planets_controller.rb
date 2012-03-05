@@ -1,9 +1,11 @@
 class PlanetsController < ApplicationController
   def show
-    @planet = Planet.find(params[:id])
+    game = Game.current
+    @planet = game.planets[params[:id].to_i]
   end
 
   def index
-    @planets = Planet.all
+    game = Game.current
+    @planets = game.planets
   end
 end
