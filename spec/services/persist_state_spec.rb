@@ -2,8 +2,6 @@ require "lean_spec_helper"
 require "app/services/persist_state"
 
 describe PersistState do
-  # PersistGame.save game
-
   it "writes the game file to an io object" do
     StringIO.open("game already saved", "w+") do |game_content|
       p = PersistState.new game_content

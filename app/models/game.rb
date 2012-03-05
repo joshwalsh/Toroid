@@ -10,7 +10,7 @@ class Game
   end
 
   def log(activity)
-    @logs << Log.new(activity)
+    @logs << activity
   end
 
   def self.current

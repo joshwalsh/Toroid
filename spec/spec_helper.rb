@@ -33,4 +33,8 @@ RSpec.configure do |config|
 
   Turnip::Config.step_dirs = "spec/acceptance/steps"
   Turnip::StepLoader.load_steps
+
+  config.after do
+    File.delete(PersistState.file_path)
+  end
 end

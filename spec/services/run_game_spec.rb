@@ -1,7 +1,6 @@
 require 'lean_spec_helper'
 require 'app/services/run_game'
 require 'app/models/game'
-require 'app/models/log'
 require 'app/models/planet'
 
 describe RunGame do

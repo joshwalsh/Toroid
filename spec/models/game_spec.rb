@@ -1,6 +1,5 @@
 require 'lean_spec_helper'
 require 'app/models/game'
-require 'app/models/log'
 require 'app/services/persist_state'
 
 describe Game do
@@ -17,6 +16,6 @@ describe Game do
   it "logs an activity" do
     g = Game.new
     g.log "testing log file"
-    g.logs.last.activity.should == "testing log file"
+    g.logs.last.should == "testing log file"
   end
 end
