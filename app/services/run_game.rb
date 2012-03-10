@@ -25,8 +25,9 @@ class RunGame
 
   def run_planet(planet)
     planet.organisms.each { |organism| run_organism(organism, planet) }
+    age = CalculateAge.for_year(@game.year, planet)
 
-    @game.log "PLANET: #{planet.name}: Age #{planet.age}"
+    @game.log "PLANET: #{planet.name}: Age #{age}"
   end
 
   def run_organism(organism, planet)
