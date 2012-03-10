@@ -14,18 +14,9 @@ describe Planet do
     p
   }
  
-  context "Age" do
-    it "records the year of its birth" do
-      game.stub(:year => 3)
-      subject.birth_year.should eq(3)
-    end
-
-    it "knows it's age" do
-      game.stub(:year => 10)
-
-      subject.birth_year = 3
-      subject.age.should eq(7)
-    end
+  it "records the year of its birth" do
+    game.stub(:year => 3)
+    subject.birth_year.should eq(3)
   end
 
   context "Size" do

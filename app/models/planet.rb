@@ -17,8 +17,4 @@ class Planet
   def size
     @width * @height
   end
-
-  def age
-    @game.year - birth_year
-  end
 end
