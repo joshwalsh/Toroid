@@ -35,6 +35,6 @@ RSpec.configure do |config|
   Turnip::StepLoader.load_steps
 
   config.after do
-    File.delete(PersistState.file_path) if not File.exists?(PersistState.file_path)
+    File.delete(PersistState.file_path) if File.exists?(PersistState.file_path)
   end
 end

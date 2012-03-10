@@ -30,8 +30,4 @@ class PlanetOccupancy
     organism.x = x
     organism.y = y
   end
-
-  def organism_at_coordinate(x, y)
-    @planet.organisms.find_by_coordinate(x, y)
-  end
 end

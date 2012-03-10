@@ -3,7 +3,8 @@ Feature: Planet Organisms
   @organisms
   @planet
   Scenario: List organisms on a planet
-    Given a planet exists with attributes:
+    Given the current year is 1
+    And a planet exists with attributes:
       | name   | Earth |
       | width  | 10    |
       | height | 10    | 

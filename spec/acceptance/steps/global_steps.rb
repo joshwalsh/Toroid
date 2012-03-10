@@ -1,9 +1,5 @@
-step "I visit the game page" do
-  visit '/'
-end
-
 step "I run the game for a year" do
-  visit '/'
+  visit "/"
   click_button "Run"
 end
 

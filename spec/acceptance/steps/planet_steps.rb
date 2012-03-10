@@ -20,6 +20,7 @@ steps_for :planet do
 
       @planet.organisms << organism
     end
+    PersistState.save(@game)
   end
 
   step "the planet has an organism with attributes:" do |table|

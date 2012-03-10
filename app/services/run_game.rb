@@ -24,13 +24,13 @@ class RunGame
   end
 
   def run_planet(planet)
-    planet.organisms.each { |organism| run_organism(organism) }
+    planet.organisms.each { |organism| run_organism(organism, planet) }
 
     @game.log "PLANET: #{planet.name}: Age #{planet.age}"
   end
 
-  def run_organism(organism)
-    occupancy = PlanetOccupancy.new organism.planet
+  def run_organism(organism, planet)
+    occupancy = PlanetOccupancy.new planet
 
     x = organism.x
     y = organism.y
@@ -38,6 +38,6 @@ class RunGame
 
     occupancy.move_organism(organism, new_coordinate[0], new_coordinate[1])
 
-    @game.log "PLANET: #{organism.planet.name}, ORGANISM: #{organism.name}, moved from #{x}, #{y} to #{organism.x}, #{organism.y}"
+    @game.log "PLANET: #{planet.name}, ORGANISM: #{organism.name}, moved from #{x}, #{y} to #{organism.x}, #{organism.y}"
   end
 end
