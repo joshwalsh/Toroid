@@ -7,3 +7,11 @@
 <%= form_tag(run_game_path, :method => :put) do |f| %>
   <%= submit_tag "Run" %>
 <% end %>
+
+<h2>Planets:</h2>
+
+<ul>
+  <% @game.planets.each do |planet| %>
+    <li><%= link_to planet.name, planet_path(planet) %></li>
+  <% end %>
+</ul>

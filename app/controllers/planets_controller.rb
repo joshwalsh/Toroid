@@ -1,7 +1,7 @@
 class PlanetsController < ApplicationController
   def show
     game = Game.current
-    @planet = game.planets[params[:id].to_i]
+    @planet = game.find_planet(params[:id])
     @age = CalculateAge.for_year(game.year, @planet)
   end
 

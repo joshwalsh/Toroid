@@ -22,4 +22,10 @@ class Game
 
     current_game
   end
+
+  def find_planet(name)
+    @planets.each do |planet|
+      return planet if planet.to_param == name
+    end
+  end
 end

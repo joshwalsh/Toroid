@@ -9,6 +9,10 @@ class Planet
     @organisms = []
   end
 
+  def to_param
+    @name.parameterize
+  end
+
   def size
     @width * @height
   end

@@ -26,4 +26,5 @@ describe Planet do
       subject.size.should eq(100)
     end
   end
+
 end
