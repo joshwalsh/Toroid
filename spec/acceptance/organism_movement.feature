@@ -4,6 +4,7 @@ Feature: Organism Movement
   @organisms
   @log
   @planet
+  @javascript
   Scenario: A single organism should make a single movement
     Given the current year is 1
     And a planet exists with attributes:
@@ -14,6 +15,7 @@ Feature: Organism Movement
       | name | x | y |
       | josh | 5 | 4 |
     And the system will navigate the organism at 5, 4 to 5, 5
+    And I visit the game page
     When I run the game for a year
     And I visit the game logs
     And the time log should include "PLANET: Earth, ORGANISM: josh, moved from 5, 4 to 5, 5"

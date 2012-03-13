@@ -1,7 +1,7 @@
 <h1>Current Game</h1>
 
 <ul>
-  <li>Year: <span class="year"><%= @game.year %></span></li>
+  <li>Year: <span data-year=""><%= @game.year %></span></li>
 </ul>
 
 <script type="text/javascript">
@@ -9,7 +9,7 @@
     $('#run_game').click(game.run);
     
     $(game).bind('game:advanced', function(e, json){
-      $('.year').html(json.year);
+      $('[data-year]').html(json.year);
     });
   });
 </script>

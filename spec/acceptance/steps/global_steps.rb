@@ -1,6 +1,9 @@
 step "I run the game for a year" do
-  visit "/"
   click_link "Run"
+end
+
+step "I visit the game page" do 
+  visit "/"
 end
 
 step "I visit the game logs" do 

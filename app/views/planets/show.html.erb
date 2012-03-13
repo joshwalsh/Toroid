@@ -2,14 +2,27 @@
   $(document).ready(function() {
     PlanetMap.setup('planet_map', <%= @planet.width %>, <%= @planet.height %>);
     PlanetMap.renderMap(<%= @planet.organisms.to_json.html_safe %>);
+
+    $('#run_game').click(game.run);
+    
+    $(game).bind('game:advanced', function(e, json){
+      var request = $.ajax('<%= planet_path(@planet) %>.json');
+      request.complete(function(response) {
+        var json = JSON.parse(response.responseText);
+        $('[data-age]').html(json.age);
+        PlanetMap.renderMap(json.organisms);
+      });
+    });
   });
 </script>
 
 <h1><%= @planet.name %></h1>
 
+<p><a id="run_game" href="#">Run</a></p>
+
 <div id="planet_map"></div>
 
 <ul>
   <li>Birth Year: <%= @planet.birth_year %></li>
-  <li>Age: <%= @age %></li>
+  <li>Age: <span data-age=""><%= @age %></span></li>
 </ul>

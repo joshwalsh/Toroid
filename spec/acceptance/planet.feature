@@ -26,6 +26,18 @@ Feature: Planet
     And I should see the planets birth year: "1"
     And I should see the planets age: "9"
 
+  @javascript
+  Scenario: Game ages a day from the planet
+    Given the current year is 1
+    And a planet exists with attributes:
+      | name   | Earth |
+      | width  | 10    |
+      | height | 10    |
+    When the current year is 10
+    And I view the page for that planet
+    And I run the game for a year
+    And I should see the planets age: "10"
+
   Scenario: Show organisms on planet
     Given the current year is 1
     Given a planet exists with attributes:
