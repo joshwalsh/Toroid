@@ -34,6 +34,8 @@ RSpec.configure do |config|
   Turnip::Config.step_dirs = "spec/acceptance/steps"
   Turnip::StepLoader.load_steps
 
+  #Capybara.javascript_driver = :webkit
+
   config.after do
     File.delete(PersistState.file_path) if File.exists?(PersistState.file_path)
   end

@@ -1,3 +1,4 @@
+@javascript
 Feature: Time
   
   Scenario: Game ages a day

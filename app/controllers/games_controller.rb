@@ -10,6 +10,9 @@ class GamesController < ApplicationController
     runner.for_year
 
     PersistState.save(@game)
-    render :show
+
+    respond_to do |format|
+      format.json { render json: @game }
+    end
   end
 end

@@ -1,12 +1,20 @@
 <h1>Current Game</h1>
 
 <ul>
-  <li>Year: <%= @game.year %></li>
+  <li>Year: <span class="year"><%= @game.year %></span></li>
 </ul>
 
-<%= form_tag(run_game_path, :method => :put) do |f| %>
-  <%= submit_tag "Run" %>
-<% end %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#run_game').click(game.run);
+    
+    $(game).bind('game:advanced', function(e, json){
+      $('.year').html(json.year);
+    });
+  });
+</script>
+
+<p><a id="run_game" href="#">Run</a></p>
 
 <h2>Planets:</h2>
 
