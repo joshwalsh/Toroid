@@ -31,7 +31,7 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
-  Turnip::Config.step_dirs = "spec/acceptance/steps"
+  Turnip::Config.step_dirs = "features/steps"
   Turnip::StepLoader.load_steps
 
   #Capybara.javascript_driver = :webkit
