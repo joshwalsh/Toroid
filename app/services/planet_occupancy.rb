@@ -3,16 +3,16 @@ class PlanetOccupancy
     @planet = planet
   end
 
-  def place_organism(x, y, organism)
-    organism.x = x
-    organism.y = y
+  def place_organism(point, organism)
+    organism.x = point.x
+    organism.y = point.y
 
     @planet.organisms << organism
   end
 
-  def find_by_coordinate(x, y)
+  def find_by_coordinate(point)
     @planet.organisms.each do |organism|
-      return organism if organism.x == x && organism.y == y
+      return organism if organism.x == point.x && organism.y == point.y
     end
 
     return nil
@@ -26,8 +26,8 @@ class PlanetOccupancy
     cell_in_direction.send(random_direction, x, y)
   end
 
-  def move_organism(organism, x, y)
-    organism.x = x
-    organism.y = y
+  def move_organism(organism, point)
+    organism.x = point.x
+    organism.y = point.y
   end
 end
