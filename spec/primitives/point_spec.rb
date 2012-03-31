@@ -13,4 +13,14 @@ describe Point do
       subject.y.should == 5
     end
   end
+
+  context "equality" do
+    it "considers points with the same x and y values to be equal" do 
+      subject.should == Point.new(3,5)
+    end
+
+    it "considers points with different x and y values to be different" do
+      subject.should_not == Point.new(3,3)
+    end
+  end
 end
