@@ -10,8 +10,6 @@ class RunGame
   def for_year
     @game.year += 1
 
-    @game.log "TIME: Year #{@game.year}"
-
     run_planets
   end
 
@@ -26,8 +24,6 @@ class RunGame
   def run_planet(planet)
     planet.organisms.each { |organism| run_organism(organism, planet) }
     age = CalculateAge.for_year(@game.year, planet)
-
-    @game.log "PLANET: #{planet.name}: Age #{age}"
   end
 
   def run_organism(organism, planet)
@@ -40,7 +36,5 @@ class RunGame
     new_coordinate = occupancy.select_random_adjacent_coordinate(point)
 
     occupancy.move_organism(organism, point)
-
-    @game.log "PLANET: #{planet.name}, ORGANISM: #{organism.name}, moved from #{x}, #{y} to #{new_coordinate.x}, #{new_coordinate.y}"
   end
 end

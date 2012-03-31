@@ -14,12 +14,6 @@ describe Game do
     Game.current.class.should == Game
   end
 
-  it "logs an activity" do
-    g = Game.new
-    g.log "testing log file"
-    g.logs.last.should == "testing log file"
-  end
-
   context "Finding" do
     it "finds a planet by parameterized name" do
       g = Game.new

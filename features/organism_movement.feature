@@ -17,5 +17,3 @@ Feature: Organism Movement
     And the system will navigate the organism at 5, 4 to 5, 5
     And I visit the game page
     When I run the game for a year
-    And I visit the game logs
-    And the time log should include "PLANET: Earth, ORGANISM: josh, moved from 5, 4 to 5, 5"

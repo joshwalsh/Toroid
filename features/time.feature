@@ -17,6 +17,3 @@ Feature: Time
       | height | 10    |
     And I visit the game page
     When I run the game for a year
-    And I visit the game logs
-    Then the time log should include "TIME: Year 2"
-    Then the time log should include "PLANET: Earth: Age 1"
