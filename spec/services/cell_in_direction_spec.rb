@@ -1,5 +1,6 @@
 require 'lean_spec_helper'
 require 'app/services/cell_in_direction'
+require 'app/primitives/point'
 
 describe CellInDirection do
   let(:planet) { mock() }
@@ -11,34 +12,34 @@ describe CellInDirection do
   end
 
   it 'gets cell at the left' do
-    subject.left(3, 3).should == [2,3]
+    subject.left(Point.new(3,3)).should == Point.new(2, 3)
   end
 
   it 'moves an organism to the right' do
-    subject.right(3, 3).should == [4,3]
+    subject.right(Point.new(3, 3)).should == Point.new(4,3)
   end
 
   it 'moves an organism down' do
-    subject.down(3, 3).should == [3,4]
+    subject.down(Point.new(3, 3)).should == Point.new(3,4)
   end
 
   it 'moves an organism up' do
-    subject.up(3, 3).should == [3,2]
+    subject.up(Point.new(3, 3)).should == Point.new(3,2)
   end
 
   it 'wraps off the left side of the screen' do
-    subject.left(0, 3).should == [9,3]
+    subject.left(Point.new(0, 3)).should == Point.new(9,3)
   end
 
   it 'wraps off the right side of the screen' do
-    subject.right(9, 3).should == [0,3]
+    subject.right(Point.new(9, 3)).should == Point.new(0,3)
   end
 
   it 'wraps off the top of the screen' do
-    subject.up(3, 0).should == [3,9]
+    subject.up(Point.new(3, 0)).should == Point.new(3,9)
   end
 
   it 'wraps off the bottom of the screen' do
-    subject.down(3, 9).should == [3,0]
+    subject.down(Point.new(3, 9)).should == Point.new(3,0)
   end
 end

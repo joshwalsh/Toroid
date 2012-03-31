@@ -3,44 +3,43 @@ class CellInDirection
     @planet = planet
   end
 
-  def left(x,y)
-    if x == 0
+  def left(point)
+    if point.x == 0
       new_x = @planet.width - 1
     else
-      new_x = x - 1
+      new_x = point.x - 1
     end
 
-    [new_x, y]
+    Point.new(new_x, point.y)
   end
 
-  def right(x,y)
-    if x == (@planet.width - 1)
+  def right(point)
+    if point.x == (@planet.width - 1)
       new_x = 0
     else
-      new_x = x + 1
+      new_x = point.x + 1
     end
 
-    [new_x, y]
+    Point.new(new_x, point.y)
   end
 
-  def down(x,y)
-    if y == (@planet.height - 1)
+  def down(point)
+    if point.y == (@planet.height - 1)
       new_y = 0
     else
-      new_y = y + 1
+      new_y = point.y + 1
     end
 
-    [x, new_y]
+    Point.new(point.x, new_y)
   end
 
-  def up(x,y)
-    if y == 0
+  def up(point)
+    if point.y == 0
       new_y = @planet.height - 1
     else
-      new_y = y - 1
+      new_y = point.y - 1
     end
 
-    [x, new_y]
-    end
-
+    Point.new(point.x, new_y)
+  end
 end

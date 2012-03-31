@@ -35,10 +35,12 @@ class RunGame
 
     x = organism.x
     y = organism.y
-    new_coordinate = occupancy.select_random_adjacent_coordinate(x, y)
+    point = Point.new(x,y)
 
-    occupancy.move_organism(organism, new_coordinate[0], new_coordinate[1])
+    new_coordinate = occupancy.select_random_adjacent_coordinate(point)
 
-    @game.log "PLANET: #{planet.name}, ORGANISM: #{organism.name}, moved from #{x}, #{y} to #{organism.x}, #{organism.y}"
+    occupancy.move_organism(organism, point)
+
+    @game.log "PLANET: #{planet.name}, ORGANISM: #{organism.name}, moved from #{x}, #{y} to #{new_coordinate.x}, #{new_coordinate.y}"
   end
 end
