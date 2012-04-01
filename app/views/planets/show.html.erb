@@ -3,8 +3,6 @@
     PlanetMap.setup('planet_map', <%= @planet.width %>, <%= @planet.height %>);
     PlanetMap.renderMap(<%= @planet.organisms.to_json.html_safe %>);
 
-    $('#run_game').click(game.run);
-    
     $(game).bind('game:advanced', function(e, json){
       var request = $.ajax('<%= planet_path(@planet) %>.json');
       request.complete(function(response) {
@@ -18,8 +16,6 @@
 
 <div class="page-header">
   <h1><%= @planet.name %></h1>
-
-  <a class="btn btn-primary btn-large btn-action" id="run_game" href="#">Run</a>
 </div>
 
 <ul class="breadcrumb">

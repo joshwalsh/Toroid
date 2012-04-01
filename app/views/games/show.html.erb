@@ -1,6 +1,5 @@
 <div class="page-header">
   <h1>Your Current Game</h1>
-  <a class="btn btn-large btn-primary btn-action" id="run_game" href="#">Run</a>
 </div>
 
 <ul class="breadcrumb">
@@ -13,19 +12,8 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#run_game').click(game.run);
-    
     $(game).bind('game:advanced', function(e, json){
       $('[data-year]').html(json.year);
     });
   });
 </script>
-
-
-<h2>Planets:</h2>
-
-<ul>
-  <% @game.planets.each do |planet| %>
-    <li><%= link_to planet.name, planet_path(planet) %></li>
-  <% end %>
-</ul>
