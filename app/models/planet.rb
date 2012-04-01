@@ -16,8 +16,16 @@ class Planet
     @width.to_i
   end
 
+  def width=(width)
+    @width = width.to_i
+  end
+
   def height
     @height.to_i
+  end
+
+  def height=(height)
+    @height = height.to_i
   end
 
   def to_param
