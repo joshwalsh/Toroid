@@ -18,12 +18,12 @@ class PlanetOccupancy
     return nil
   end
 
-  def select_random_adjacent_coordinate(x, y)
+  def select_random_adjacent_coordinate(point)
     directions = [:left, :right, :up, :down]
     random_direction = directions.shuffle.first
 
     cell_in_direction = CellInDirection.new @planet
-    cell_in_direction.send(random_direction, x, y)
+    cell_in_direction.send(random_direction, point)
   end
 
   def move_organism(organism, point)

@@ -35,6 +35,6 @@ class RunGame
 
     new_coordinate = occupancy.select_random_adjacent_coordinate(point)
 
-    occupancy.move_organism(organism, point)
+    occupancy.move_organism(organism, new_coordinate)
   end
 end
