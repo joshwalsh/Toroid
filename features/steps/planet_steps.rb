@@ -49,6 +49,16 @@ steps_for :planet do
     end
   end
 
+  step "I should see organisms on the grid:" do |table|
+    table.hashes.each do |organism|
+      x = organism["x"]
+      y = organism["y"]
+      name = organism["name"]
+
+      page.should have_css("[data-x=\"#{x}\"][data-y=\"#{y}\"][data-name=\"#{name}\"]")
+    end
+  end
+
   step "I view the planets list page" do
     visit planets_path
   end

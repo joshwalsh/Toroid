@@ -27,19 +27,24 @@ var PlanetMap = {
   },
 
   _renderBlankCell: function(x, y) {
-    this._renderCell(x, y, {fill: '#eee', 'stroke-width': 0});
-  },
-
-  _renderOccupiedCell: function(organism) {
-    this._renderCell(organism.x, organism.y, {fill: '#888', 'stroke-width': 0});
-  },
-
-  _renderCell: function(x, y, style) {
     var pixelX = this._plotPoint(x);
     var pixelY = this._plotPoint(y);
 
     var box = this.paper.rect(pixelX, pixelY, this.pixelDimension, this.pixelDimension);
-    box.attr(style);
+    box.attr({fill: '#eee', 'stroke-width': 0})
+  },
+
+  _renderOccupiedCell: function(organism) {
+    var pixelX = this._plotPoint(organism.x);
+    var pixelY = this._plotPoint(organism.y);
+
+    var box = this.paper.rect(pixelX, pixelY, this.pixelDimension, this.pixelDimension);
+    box.attr({fill: '#888', 'stroke-width': 0});
+
+    var $node = $(box.node);
+    $node.attr('data-x', organism.x);
+    $node.attr('data-y', organism.y);
+    $node.attr('data-name', organism.name);
   },
 
   _plotPoint: function(coordinate) {
