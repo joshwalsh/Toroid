@@ -1,4 +1,11 @@
-<h1>Current Game</h1>
+<div class="page-header">
+  <h1>Your Current Game</h1>
+  <a class="btn btn-large btn-primary btn-action" id="run_game" href="#">Run</a>
+</div>
+
+<ul class="breadcrumb">
+  <li class="current"><a href="/">Current Game</a></li>
+</ul>
 
 <ul>
   <li>Year: <span data-year=""><%= @game.year %></span></li>
@@ -14,7 +21,6 @@
   });
 </script>
 
-<p><a id="run_game" href="#">Run</a></p>
 
 <h2>Planets:</h2>
 

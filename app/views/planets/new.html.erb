@@ -1,22 +1,27 @@
-<h1>Add a new planet</h1>
+<div class="page-header">
+  <h1>Add a new planet</h1>
+</div>
 
 <%= form_for(@planet) do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :width %>
-    <%= f.text_field :width %>
-  </div>
+    <div class="control-group">
+      <%= f.label :width %>
+      <%= f.text_field :width %>
+    </div>
 
-  <div class="field">
-    <%= f.label :height %>
-    <%= f.text_field :height %>
-  </div>
+    <div class="control-group">
+      <%= f.label :height %>
+      <%= f.text_field :height %>
+    </div>
 
-  <div class="field submit">
-    <%= f.submit "Create Planet" %>
-  </div>
+    <div class="form-actions">
+      <%= f.submit "Create Planet", class: "btn btn-primary" %>
+      <%= link_to "Cancel", planets_path, class: 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

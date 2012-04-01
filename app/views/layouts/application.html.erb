@@ -7,10 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render 'layouts/navbar' %>
   <div class="container-fluid">
-    <% if flash[:notice] %>
-      <p class="alert alert-success"><%= flash[:notice] %></p>
-    <% end %>
+    <%= render 'layouts/flash_message' %>
 
     <%= yield %>
   </div>

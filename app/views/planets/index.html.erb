@@ -1,9 +1,16 @@
-<h1>Planets</h1>
+<div class="page-header">
+  <h1>Planets</h1>
+</div>
+
+<ul class="breadcrumb">
+  <li><a href="/">Current Game</a> <span class="divider">/</span></li>
+  <li class="current">Planets</li>
+</ul>
 
 <ul>
 <% @planets.each do |planet| %>
-    <li><%= planet.name %>
+    <li><%= link_to planet.name, planet %></li>
 <% end %>
 </ul>
 
-<%= link_to "Add a planet", new_planet_path %>
+<%= link_to "Add a planet", new_planet_path, class: 'btn' %>

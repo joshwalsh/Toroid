@@ -1,4 +1,13 @@
-<h1>Organisms in <%= @planet.name %></h1>
+<div class="page-header">
+  <h1>Organisms in <%= @planet.name %></h1>
+</div>
+
+<ul class="breadcrumb">
+  <li><a href="/">Current Game</a> <span class="divider">/</span></li>
+  <li><%= link_to "Planets", planets_path %> <span class="divider">/</span></li>
+  <li><%= link_to @planet.name, @planet %> <span class="divider">/</span></li>
+  <li class="current">Organisms</li>
+</ul>
 
 <ul>
 <% @organisms.each do |organism| %>

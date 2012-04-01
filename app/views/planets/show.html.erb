@@ -16,9 +16,17 @@
   });
 </script>
 
-<h1><%= @planet.name %></h1>
+<div class="page-header">
+  <h1><%= @planet.name %></h1>
 
-<p><a id="run_game" href="#">Run</a></p>
+  <a class="btn btn-primary btn-large btn-action" id="run_game" href="#">Run</a>
+</div>
+
+<ul class="breadcrumb">
+  <li><a href="/">Current Game</a> <span class="divider">/</span></li>
+  <li><%= link_to "Planets", planets_path %> <span class="divider">/</span></li>
+  <li class="current"><%= @planet.name %></li>
+</ul>
 
 <div id="planet_map"></div>
 
