@@ -24,9 +24,20 @@
   <li class="current"><%= @planet.name %></li>
 </ul>
 
-<div id="planet_map"></div>
+<div class="row-fluid">
+  <div class="span8" id="planet_map"></div>
 
-<ul>
-  <li>Birth Year: <%= @planet.birth_year %></li>
-  <li>Age: <span data-age=""><%= @age %></span></li>
-</ul>
+  <div class="span4">
+    <table class="table table-bordered">
+      <tr>
+        <th>Birth Year</th>
+        <th>Age</th>
+      </tr>
+      <tr>
+        <td><%= @planet.birth_year %></td>
+        <td data-age=""><%= @age %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+

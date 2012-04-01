@@ -7,10 +7,17 @@
   <li class="current">Planets</li>
 </ul>
 
-<ul>
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Birth Year</th>
+  </tr>
 <% @planets.each do |planet| %>
-    <li><%= link_to planet.name, planet %></li>
+  <tr>
+    <td><%= link_to planet.name, planet %></td>
+    <td><%= planet.birth_year %></td>
+  </tr>
 <% end %>
-</ul>
+</table>
 
 <%= link_to "Add a planet", new_planet_path, class: 'btn' %>

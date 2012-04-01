@@ -6,9 +6,14 @@
   <li class="current"><a href="/">Current Game</a></li>
 </ul>
 
-<ul>
-  <li>Year: <span data-year=""><%= @game.year %></span></li>
-</ul>
+<table class="table table-bordered">
+  <tr>
+    <th>Year</th>
+  </tr>
+  <tr>
+    <td data-year=""><%= @game.year %></td>
+  </tr>
+</table>
 
 <script type="text/javascript">
   $(document).ready(function(){
