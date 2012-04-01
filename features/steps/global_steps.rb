@@ -11,3 +11,7 @@ step "the current year is :year" do |year|
   @game.year = year.to_i
   PersistState.save(@game)
 end
+
+step "I should see a flash message: :message" do |message|
+  page.should have_content(message)
+end

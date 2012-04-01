@@ -1,1 +1,3 @@
 $: << "."
+
+require 'active_model'

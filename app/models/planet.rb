@@ -1,4 +1,8 @@
 class Planet
+  include ActiveModel::Validations  
+  include ActiveModel::Conversion  
+  extend ActiveModel::Naming 
+
   attr_accessor :name
   attr_accessor :width, :height
   attr_accessor :birth_year
@@ -15,5 +19,9 @@ class Planet
 
   def size
     @width * @height
+  end
+
+  def persisted?
+    not @name.nil?
   end
 end

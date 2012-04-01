@@ -1,5 +1,17 @@
 Feature: Planet
 
+  Scenario: Create a new planet
+    Given the current year is 1
+    And I view the planets list page
+    When I request a new planet
+    And I fill in the new planet form with:
+      | key     | value |
+      | Name    | Mars  |
+      | Width   | 5     |
+      | Height  | 5     | 
+    Then I should see a flash message: "The planet Mars was created"
+    And I should be on the planet show page for the planet "Mars"
+
   Scenario: List all planets
     Given the current year is 1
     And a planet exists with attributes:

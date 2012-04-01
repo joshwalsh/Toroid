@@ -53,7 +53,23 @@ steps_for :planet do
     visit planets_path
   end
 
+  step "I request a new planet" do
+    click_link 'Add a planet'
+  end
+
+  step "I fill in the new planet form with:" do |table|
+    table.hashes.each do |hash|
+      fill_in hash['key'], with: hash['value']
+    end
+
+    click_button "Create Planet"
+  end
+
   step "I view the page with organisms scoped by planet" do
     visit planet_organisms_path @planet
+  end
+
+  step "I should be on the planet show page for the planet :planet_name" do |planet_name|
+    current_path.should == planet_path(planet_name.parameterize)
   end
 end
