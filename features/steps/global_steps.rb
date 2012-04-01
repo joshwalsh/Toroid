@@ -1,5 +1,5 @@
 step "I run the game for a year" do
-  click_link "Run"
+  click_button "Run"
 end
 
 step "I visit the game page" do 

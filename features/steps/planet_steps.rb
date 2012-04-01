@@ -36,11 +36,11 @@ steps_for :planet do
   end
 
   step "I should see the planets birth year: :birth_year" do |birth_year|
-    page.should have_content("Birth Year: #{birth_year}")
+    find('[data-birthyear]').should have_content(birth_year)
   end
 
   step "I should see the planets age: :age" do |age|
-    page.should have_content("Age: #{age}")
+    find('[data-age]').should have_content(age)
   end
 
   step "I should see a list of organisms:" do |table|
