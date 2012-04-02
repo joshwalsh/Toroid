@@ -20,8 +20,8 @@ class PlanetsController < ApplicationController
 
     planet = Planet.new game
     planet.name = params[:planet][:name]
-    planet.width = params[:planet][:width]
-    planet.height = params[:planet][:height]
+    planet.width = params[:planet][:width].to_i
+    planet.height = params[:planet][:height].to_i
 
     game.planets << planet
     PersistState.save game

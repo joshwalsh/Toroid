@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   def advance
     @game = Game.current
 
+    Rails.logger.info @game.inspect
     runner = RunGame.new @game
     runner.for_year
 
