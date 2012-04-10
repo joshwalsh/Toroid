@@ -52,6 +52,10 @@ end
 #   end
 #
 
+After do |scenario|
+  File.delete(PersistState.file_path) if File.exists?(PersistState.file_path)
+end
+
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature

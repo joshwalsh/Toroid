@@ -1,9 +1,5 @@
 Feature: Organism Movement
 
-  @time
-  @organisms
-  @log
-  @planet
   @javascript
   Scenario: A single organism should make a single movement
     Given the current year is 1
