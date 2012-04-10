@@ -17,11 +17,15 @@ group :test, :development do
   gem "factory_girl_rails"
   gem "rspec-rails"
   gem "guard-rspec"
+  gem "guard-cucumber"
   gem "growl"
   gem "jasmine"
 end
 
-group :test do
-  gem "turnip"
-  gem "capybara"
+group :cucumber do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'launchy'
 end
